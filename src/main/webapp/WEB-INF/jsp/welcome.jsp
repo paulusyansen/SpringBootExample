@@ -27,14 +27,14 @@
 			google.visualization.arrayToDataTable([
 						[ 'Date', 'elevenia', 'tokopedia', 'shopee', 'lazada',
 								'blibli' ],
-						[ '2014', 1000, 400, 200, 100, 900 ],
-						[ '2015', 1170, 460, 250, 300, 100 ],
-						[ '2016', 660, 1120, 300, 500, 700 ],
-						[ '2017', 1030, 540, 350, 800, 900 ] ]);
+						[ 'W1 JUNE 2018', 1000, 400, 200, 100, 900 ],
+						[ 'W2 JUNE 2018', 1170, 460, 250, 300, 100 ],
+						[ 'W3 JUNE 2018', 660, 1120, 300, 500, 700 ],
+						[ 'W4 JUNE 2018', 1030, 540, 350, 800, 900 ] ]);
 
 		var options = {
 			chart : {
-				title : 'Speed Comparasion',
+				title : 'Mobile Site Speed Comparasion',
 				subtitle : 'Sales, Expenses, and Profit: 2014-2017'
 			},
 	          bars: 'vertical',
@@ -54,15 +54,15 @@
 	function lineChart() {
 		var data = google.visualization.arrayToDataTable([
 			[ 'Date', 'elevenia', 'tokopedia', 'shopee', 'lazada', 'blibli' ],
-			[ '2014', 1000, 400, 200, 100, 900 ],
-			[ '2015', 1170, 460, 250, 300, 100 ],
-			[ '2016', 660, 1120, 300, 500, 700 ],
-			[ '2017', 1030, 540, 350, 800, 900 ] ]);
+			[ 'W1 JUNE 2018', 1000, 400, 200, 100, 900 ],
+			[ 'W2 JUNE 2018', 1170, 460, 250, 300, 100 ],
+			[ 'W3 JUNE 2018', 660, 1120, 300, 500, 700 ],
+			[ 'W4 JUNE 2018', 1030, 540, 350, 800, 900 ] ]);
 
 
 		var options = {
 			chart : {
-				title : 'Box Office Earnings in First Two Weeks of Opening',
+				title : 'Alexa | Site Speed Comparasion in every weeks',
 				subtitle : 'in milliseconds (ms)'
 			},
 			width : 800,
@@ -81,12 +81,12 @@
 	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Spring Boot</a>
+				<a class="navbar-brand" href="#">paingan-boot-charts</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
 				</ul>
 			</div>
 		</div>
@@ -94,17 +94,17 @@
 
 	<div class="container">
 
-		<div class="starter-template">
-			<h1>Spring Boot Web JSP Example</h1>
-			<h2>Message: ${message}</h2>
-		</div>
+<!-- 		<div class="starter-template"> -->
+<!-- 			<h1>Spring Boot Web JSP Example</h1> -->
+<%-- 			<h2>Message: ${message}</h2> --%>
+<!-- 		</div> -->
 
 
 		<div id="columnchart_material"></div>
 		<br />
 		<div id="linechart_material"></div>
 		
-		</div>
+	</div>
 
 	<script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 

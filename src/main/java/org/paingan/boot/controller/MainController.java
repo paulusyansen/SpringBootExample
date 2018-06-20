@@ -19,19 +19,18 @@ public class MainController {
 		return "Hello World2";
 	}
 	
-	
-	@RequestMapping(value="/admin")
+	@RequestMapping(value="/about")
 	public String test(HttpServletRequest request, HttpServletResponse response) {
 		return "test";
 	}
 	
 	// inject via application.properties
-		@Value("${welcome.message:test}")
-		private String message = "Hello World";
+	@Value("${welcome.message:test}")
+	private String message = "Hello World";
 
-		@RequestMapping("/")
-		public String welcome(Map<String, Object> model) {
-			model.put("message", this.message);
-			return "welcome";
-		}
+	@RequestMapping("/")
+	public String welcome(Map<String, Object> model) {
+		model.put("message", this.message);
+		return "welcome";
+	}
 }
