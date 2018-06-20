@@ -66,7 +66,8 @@
 				subtitle : 'in milliseconds (ms)'
 			},
 			width : 800,
-			height : 400
+			height : 400,
+			colors : [ '#ff7d1d', '#42b549', '#F15A29', '#1a9cb7', '#0095da' ]
 		};
 
 		var chart = new google.charts.Line(document.getElementById('linechart_material'));
@@ -102,6 +103,8 @@
 		<div id="columnchart_material"></div>
 		<br />
 		<div id="linechart_material"></div>
+		
+		</div>
 
 	<script type="text/javascript" src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 

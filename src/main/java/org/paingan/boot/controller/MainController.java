@@ -1,4 +1,4 @@
-package com.example.demo;
+package org.paingan.boot.controller;
 
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class TestController {
+public class MainController {
 
 	@RequestMapping("/admin2")
 	@ResponseBody
