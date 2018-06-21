@@ -19,10 +19,7 @@ public class MainController {
 		return "Hello World2";
 	}
 	
-	@RequestMapping(value="/about")
-	public String test(HttpServletRequest request, HttpServletResponse response) {
-		return "test";
-	}
+	
 	
 	// inject via application.properties
 	@Value("${welcome.message:test}")
@@ -32,5 +29,15 @@ public class MainController {
 	public String welcome(Map<String, Object> model) {
 		model.put("message", this.message);
 		return "welcome";
+	}
+	
+	@RequestMapping(value="/about")
+	public String about(HttpServletRequest request, HttpServletResponse response) {
+		return "test";
+	}
+	
+	@RequestMapping(value="/chart")
+	public String chart(HttpServletRequest request, HttpServletResponse response) {
+		return "chart";
 	}
 }
