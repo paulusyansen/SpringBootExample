@@ -40,4 +40,9 @@ public class MainController {
 	public String chart(HttpServletRequest request, HttpServletResponse response) {
 		return "chart";
 	}
+	
+	@RequestMapping(value="/form")
+	public String form(HttpServletRequest request, HttpServletResponse response) {
+		return "form";
+	}
 }
