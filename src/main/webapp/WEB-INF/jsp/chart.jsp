@@ -37,9 +37,10 @@
 				title : 'Mobile Site Speed Comparison',
 				subtitle : 'in miliseconds (ms)'
 			},
-	          bars: 'vertical',
-	          width : 800,
-	          height: 400,
+	       	bars: 'vertical',
+	        width : 800,
+	        height: 400,
+	        vAxis: {format: ''},
 			colors : [ '#ff7d1d', '#42b549', '#F15A29', '#1a9cb7', '#0095da' ]
 		};
 

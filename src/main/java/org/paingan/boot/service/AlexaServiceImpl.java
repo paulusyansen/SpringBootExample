@@ -21,7 +21,10 @@ public class AlexaServiceImpl implements AlexaService {
 		return alexaRepository.findAll();
 	}
 
-
+	/*
+	 * (non-Javadoc)
+	 * @see org.paingan.boot.service.AlexaService#findAlexaById(int)
+	 */
 	@Override
 	public List<Alexa> findAlexaById(int id) {
 		return alexaRepository.findAlexaById(id);

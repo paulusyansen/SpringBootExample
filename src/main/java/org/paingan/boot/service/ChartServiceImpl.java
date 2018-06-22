@@ -13,12 +13,6 @@ public class ChartServiceImpl implements ChartService {
 	@Autowired
 	private ChartRepository chartRepository;
 
-	/* (non-Javadoc)
-	 * @see org.paingan.boot.service.ChartService#findAllChart()
-	 */
-//	@Override
-//	public List<Chart> findAllChart() {
-//		return chartRepository.findAllChart();
-//	}
+
 		
 }
