@@ -34,7 +34,7 @@
 
 		var options = {
 			chart : {
-				title : 'Mobile Site Speed Comparasion',
+				title : 'Mobile Site Speed Comparison',
 				subtitle : 'in miliseconds (ms)'
 			},
 	          bars: 'vertical',
