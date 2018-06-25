@@ -77,4 +77,9 @@ public class Chart {
 	public void setDevice(String device) {
 		this.device = device;
 	}
+	
+	@Override
+	public String toString() {
+		return "Chart [eid = " + id + ", date = " + date + ", score = " + score + ", site = " + site + ", page = " + page + ", device = " + device +"]";
+	}
 }

@@ -59,4 +59,9 @@ public class Alexa {
 	public void setSite(String site) {
 		this.site = site;
 	}
+	
+	@Override
+	public String toString() {
+		return "Alexa [eid = " + id + ", date = " + date + ", score = " + score + ", site = " + site + "]";
+	}
 }

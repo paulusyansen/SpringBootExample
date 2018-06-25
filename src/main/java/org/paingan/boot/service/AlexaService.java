@@ -8,4 +8,6 @@ public interface AlexaService {
 
 	List<Alexa> findAllAlexa();
 	List<Alexa> findAlexaById(int id);
+	public List<Alexa> findDateSite(Alexa alexa);
+	public List<Alexa> search(String search);
 }

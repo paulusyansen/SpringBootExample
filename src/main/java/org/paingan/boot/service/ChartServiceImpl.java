@@ -12,7 +12,4 @@ public class ChartServiceImpl implements ChartService {
 
 	@Autowired
 	private ChartRepository chartRepository;
-
-
-		
 }
