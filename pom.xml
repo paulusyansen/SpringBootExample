@@ -45,6 +45,11 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-thymeleaf</artifactId> -->
+<!-- 		</dependency> -->
 
 		<!-- JSTL for JSP -->
 		<dependency>
@@ -118,19 +123,30 @@
             </exclusions>
 	</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
-		<dependency>
-		    <groupId>com.zaxxer</groupId>
-		    <artifactId>HikariCP</artifactId>
-		    <version>3.2.0</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-<dependency>
-    <groupId>com.google.guava</groupId>
-    <artifactId>guava</artifactId>
-    <version>19.0</version>
-</dependency>
+	<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+	<dependency>
+		<groupId>com.zaxxer</groupId>
+		<artifactId>HikariCP</artifactId>
+		<version>3.2.0</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+	<dependency>
+		<groupId>com.google.guava</groupId>
+		<artifactId>guava</artifactId>
+		<version>19.0</version>
+	</dependency>
+
+
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<!-- 	<dependency> -->
+<!-- 		<groupId>org.projectlombok</groupId> -->
+<!-- 		<artifactId>lombok</artifactId> -->
+<!-- 		<version>1.18.0</version> -->
+<!-- 		<scope>provided</scope> -->
+<!-- 	</dependency> -->
+
+
 	</dependencies>
 
 	<build>

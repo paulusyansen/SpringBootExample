@@ -1,7 +1,7 @@
 package org.paingan.boot.util;
 
 public enum SearchOperation {
-	EQUALITY, NEGATION, GREATER_THAN, LESS_THAN, LIKE, STARTS_WITH, ENDS_WITH, CONTAINS;
+	EQUALITY, NEGATION, GREATER_THAN, LESS_THAN, LIKE, STARTS_WITH, ENDS_WITH, CONTAINS, ORDER_ASC, ORDER_DESC;
 
     public static final String[] SIMPLE_OPERATION_SET = { ":", "!", ">", "<", "~" };
 
@@ -16,6 +16,7 @@ public enum SearchOperation {
     public static final String LEFT_PARANTHESIS = "(";
 
     public static final String RIGHT_PARANTHESIS = ")";
+    
 
     public static SearchOperation getSimpleOperation(final char input) {
         switch (input) {

@@ -14,15 +14,19 @@ public class SearchCriteria {
 	public String getKey() {
 		return key;
 	}
+	
 	public void setKey(String key) {
 		this.key = key;
 	}
+	
 	public SearchOperation getOperation() {
 		return operation;
 	}
+	
 	public void setOperation(SearchOperation operation) {
 		this.operation = operation;
 	}
+	
 	public Object getValue() {
 		return value;
 	}

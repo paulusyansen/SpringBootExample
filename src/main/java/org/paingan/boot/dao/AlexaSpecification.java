@@ -25,7 +25,9 @@ public class AlexaSpecification implements Specification<Alexa> {
 	@Override
     public Predicate toPredicate(
       Root<Alexa> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
-     
+		
+		query.orderBy(builder.desc(root.get("id")));
+		
         switch (criteria.getOperation()) {
         case EQUALITY:
             return builder.equal(root.get(criteria.getKey()), criteria.getValue());

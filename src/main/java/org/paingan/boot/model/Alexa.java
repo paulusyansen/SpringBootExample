@@ -1,5 +1,7 @@
 package org.paingan.boot.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "alexa")
-public class Alexa {
+public class Alexa implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -24,16 +26,20 @@ public class Alexa {
 	@NotBlank
 	private String site;
 	
-//	public Alexa() {
-//		
-//	}
+	@NotBlank
+	private int isshow;
+	
+	public Alexa() {
+		
+	}
 //	
-//	public Alexa(int id, String date, int score, String site) {
-//		this.id = id;
-//		this.date = date;
-//		this.score = score;
-//		this.site = site;
-//	}
+	public Alexa(int id, String date, int score, String site, int isshow) {
+		this.id = id;
+		this.date = date;
+		this.score = score;
+		this.site = site;
+		this.isshow = isshow;
+	}
 	
 	public int getId() {
 		return id;
@@ -60,8 +66,15 @@ public class Alexa {
 		this.site = site;
 	}
 	
+	public int getIsshow() {
+		return isshow;
+	}
+	public void setIsshow(int isshow) {
+		this.isshow = isshow;
+	}
+	
 	@Override
 	public String toString() {
-		return "Alexa [eid = " + id + ", date = " + date + ", score = " + score + ", site = " + site + "]";
+		return "Alexa [eid = " + id + ", date = " + date + ", score = " + score + ", site = " + site + ", isshow = " + isshow + "]";
 	}
 }
