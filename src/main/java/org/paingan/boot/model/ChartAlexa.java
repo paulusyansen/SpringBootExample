@@ -77,4 +77,8 @@ public class ChartAlexa implements Serializable{
 	public void setShowYn(int showYn) {
 		this.showYn = showYn;
 	}
+	@Override
+	public String toString() {
+		return "Alexa [eid = " + id + ", date = " + date + ", elevenia = " + elevenia + ", tokopedia = " + tokopedia + ", shopee = " + shopee + ", blibli = " + blibli + ", showYn = " + showYn + "]";
+	}
 }

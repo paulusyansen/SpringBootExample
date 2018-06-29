@@ -20,7 +20,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<a class="navbar-brand" href="/">paingan-boot-charts</a>
+		<a class="navbar-brand" href="/">${title}</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -36,13 +36,13 @@
 		        <a class="nav-link" href="/form">Data</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link disabled" href="javascript:void(0);">About</a>
+		        <a class="nav-link disabled" href="javascript:void(0);">Login</a>
 		      </li>    
 		    </ul>
 		 </div>
 	</nav>
 
-	<div class="container">
+	<div class="container-fluid">
 		<br />
 		<div class="alert alert-primary">
 	    <strong>Primary!</strong> Indicates an important action.

@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class MainController {
+public class MainController{
 	
 	@Autowired
 	private ChartAlexaService chartAlexaService;
 
 	@RequestMapping("/admin2")
 	@ResponseBody
-	public String home() {
+	public String home()  throws Exception{
 		return "Hello World2";
 	}
 	
-	
-	
 	// inject via application.properties
-	@Value("${welcome.message:test}")
-	private String message = "Hello World";
+	@Value("${header.title}")
+	private String title = "Charts";
 
 	@RequestMapping("/")
-	public String welcome(Map<String, Object> model) {
-		model.put("message", this.message);
+	public String welcome(Map<String, Object> model) throws Exception {
+		model.put("title", this.title);
 		return "main";
 	}
 	
 	@RequestMapping(value="/about")
-	public String about(HttpServletRequest request, HttpServletResponse response) {
+	public String about(Map<String, Object> model) throws Exception {
 		return "main";
 	}
 	
 	@RequestMapping(value="/chart")
-	public String chart(HttpServletRequest request, HttpServletResponse response) {
+	public String chart(Map<String, Object> model)  throws Exception {
+		model.put("title", this.title);
 		return "chart";
 	}
 	
 	@RequestMapping(value="/form")
-	public String form(Model model) {
+	public String form(Model model) throws Exception {
+		model.addAttribute("title", this.title);
 		model.addAttribute("alexa",chartAlexaService.searchV2("showYn:1"));
 		return "form";
 	}

@@ -15,7 +15,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<a class="navbar-brand" href="/">paingan-boot-charts</a>
+		<a class="navbar-brand" href="/"><c:out value="${title}" /></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -31,7 +31,7 @@
 		        <a class="nav-link active" href="/form">Data</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link disabled" href="javascript:void(0);">About</a>
+		        <a class="nav-link disabled" href="javascript:void(0);">Login</a>
 		      </li>    
 		    </ul>
 		 </div>
@@ -39,12 +39,12 @@
 
 
 		
-	<div class="container">
-		<div class="alert alert-warning" role="alert">
-		  This is a <strong>average</strong> score!
-		</div>
+	<div class="container-fluid">
+<!-- 		<div class="alert alert-warning" role="alert"> -->
+<!-- 		  This is a <strong>average</strong> score! -->
+<!-- 		</div> -->
 		<div class="card position-relative">
-			<div class="card-header">Manual Measurement Average Load Time</div>
+			<div class="card-header"><strong>4G - Average Load Time</strong></div>
 			<div class="card-body">
 				<form>
 					<div class="form-row">
@@ -126,28 +126,45 @@
 		<br />
 
 		<div class="card position-relative">
-			<div class="card-header">Alexa Average Load Time</div>
+			<div class="card-header"><strong>Alexa - Average Load Time</strong></div>
 			<div class="card-body">
 				<form>
 					<div class="form-row">
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-2">
 							<label for="inputDate">Date</label> 
 							<input type="text" class="form-control" id="inputDate" placeholder="Date">
 						</div>
+<!-- 						<div class="form-group col-md-2"> -->
+<!-- 							<label for="inputSite">Site</label>  -->
+<!-- 							<select id="inputSite" class="form-control"> -->
+<!-- 								<option selected>Choose...</option> -->
+<!-- 								<option value="elevenia">elevenia</option> -->
+<!-- 								<option value="tokopedia">tokopedia</option> -->
+<!-- 								<option value="shopee">shopee</option> -->
+<!-- 								<option value="lazada">lazada</option> -->
+<!-- 								<option value="blibli">blibli</option> -->
+<!-- 							</select> -->
+<!-- 						</div> -->
+						
 						<div class="form-group col-md-2">
-							<label for="inputSite">Site</label> 
-							<select id="inputSite" class="form-control">
-								<option selected>Choose...</option>
-								<option value="elevenia">elevenia</option>
-								<option value="tokopedia">tokopedia</option>
-								<option value="shopee">shopee</option>
-								<option value="lazada">lazada</option>
-								<option value="blibli">blibli</option>
-							</select>
+							<label for="inputElevenia">elevenia</label> 
+							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia">
 						</div>
 						<div class="form-group col-md-2">
-							<label for="inputScore">Score</label> 
-							<input type="text" class="form-control" id="inputScore" placeholder="Score">
+							<label for="inputTokopedia">tokopedia</label> 
+							<input type="text" class="form-control" id="inputTokopedia" placeholder="tokopedia">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputShopee">shopee</label> 
+							<input type="text" class="form-control" id="inputShopee" placeholder="shopee">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputLazada">lazada</label> 
+							<input type="text" class="form-control" id="inputLazada" placeholder="lazada">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputBlibli">blibli</label> 
+							<input type="text" class="form-control" id="inputBlibli" placeholder="blibli">
 						</div>
 					</div>
 					<button type="button" class="btn btn-primary" id="form-add-alexa">Add</button>
@@ -158,7 +175,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">#</th>
-							<th scope="col">date</th>
+							<th scope="col">Date</th>
 							<th scope="col">elevenia</th>
 							<th scope="col">tokopedia</th>
 							<th scope="col">shopee</th>
