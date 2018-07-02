@@ -55,17 +55,18 @@
 	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	
 	<script type="text/javascript">
+	
 	google.charts.load('current', {
 		'packages' : [ 'corechart','bar','line' ]
 	});
 
+	// BAR CHART
 	google.charts.setOnLoadCallback(barChart);
 
 	function barChart() {
 		var data = 
 			google.visualization.arrayToDataTable([
-						[ 'Date', 'elevenia', 'tokopedia', 'shopee', 'lazada',
-								'blibli' ],
+						[ 'Date', 'elevenia', 'tokopedia', 'shopee', 'lazada', 'blibli' ],
 						[ 'W1 JUNE 2018', 1000, 400, 200, 100, 900 ],
 						[ 'W2 JUNE 2018', 1170, 460, 250, 300, 100 ],
 						[ 'W3 JUNE 2018', 660, 1120, 300, 500, 700 ],
@@ -89,18 +90,10 @@
 		chart.draw(data, google.charts.Bar.convertOptions(options));
 	}
 	
-	
-	
-
-	//var alexaData = [[ 'Date', 'elevenia', 'tokopedia', 'shopee', 'lazada', 'blibli' ]];
-	
-
+	// LINE CHART
 	google.charts.setOnLoadCallback(lineChart);
 	
 	function lineChart() {
-
-		var dataArray = [];
-		
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'date');
 		data.addColumn('number', 'elevenia');
@@ -109,6 +102,8 @@
 		data.addColumn('number', 'lazada');
 		data.addColumn('number', 'blibli');
 	
+		var dataArray = [];
+		
 		$.ajax({
 			type : "GET",
 			url : "/ajax/chart/alexa/search?q=sortasc:date,showYn:1",
