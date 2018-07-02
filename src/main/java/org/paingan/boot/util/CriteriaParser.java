@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.paingan.constant.SearchOperation;
+
 import com.google.common.base.Joiner;
 
 public class CriteriaParser {

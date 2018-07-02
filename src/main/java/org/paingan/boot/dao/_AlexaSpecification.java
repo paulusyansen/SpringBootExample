@@ -6,8 +6,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.paingan.boot.model.Alexa;
-import org.paingan.boot.util.SearchOperation;
 import org.paingan.boot.util.SpecSearchCriteria;
+import org.paingan.constant.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;
 
 public class _AlexaSpecification implements Specification<Alexa>{

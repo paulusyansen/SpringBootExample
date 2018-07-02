@@ -1,4 +1,4 @@
-package org.paingan.boot.util;
+package org.paingan.constant;
 
 public enum SearchOperation {
 	EQUALITY, NEGATION, GREATER_THAN, LESS_THAN, LIKE, STARTS_WITH, ENDS_WITH, CONTAINS, ORDER_ASC, ORDER_DESC;

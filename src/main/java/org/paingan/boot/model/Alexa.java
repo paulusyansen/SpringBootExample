@@ -1,7 +1,5 @@
 package org.paingan.boot.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "alexa")
-public class Alexa implements Serializable{
+public class Alexa{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.paingan.boot.model.Alexa;
 import org.paingan.boot.util.SearchCriteria;
-import org.paingan.boot.util.SearchOperation;
+import org.paingan.constant.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 

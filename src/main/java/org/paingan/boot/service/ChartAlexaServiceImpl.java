@@ -13,7 +13,7 @@ import org.paingan.boot.dao.ChartAlexaSpecificationBuilder;
 import org.paingan.boot.dao._AlexaSpecificationBuilder;
 import org.paingan.boot.model.ChartAlexa;
 import org.paingan.boot.util.SearchCriteria;
-import org.paingan.boot.util.SearchOperation;
+import org.paingan.constant.SearchOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;

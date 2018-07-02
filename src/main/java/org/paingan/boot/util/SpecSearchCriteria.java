@@ -1,5 +1,7 @@
 package org.paingan.boot.util;
 
+import org.paingan.constant.SearchOperation;
+
 public class SpecSearchCriteria {
 	private String key;
 	private SearchOperation operation;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.paingan.boot.model.Alexa;
 import org.paingan.boot.util.SearchCriteria;
-import org.paingan.boot.util.SearchOperation;
+import org.paingan.constant.SearchOperation;
 
 public class AlexaRepositoryImpl   {
 	public List<Alexa> findAllAlexa(){

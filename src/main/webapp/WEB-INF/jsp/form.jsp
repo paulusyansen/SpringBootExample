@@ -96,10 +96,12 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Date</th>
-							<th scope="col">Score</th>
-							<th scope="col">Site</th>
 							<th scope="col">Page</th>
-							<th scope="col">Device</th>
+							<th scope="col">elevenia</th>
+							<th scope="col">tokopedia</th>
+							<th scope="col">shopee</th>
+							<th scope="col">lazada</th>
+							<th scope="col">blibli</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -110,12 +112,16 @@
 							<td>@mdo</td>
 							<td>Otto</td>
 							<td>@mdo</td>
+							<td>Otto</td>
+							<td>@mdo</td>
 						</tr>
 						<tr>
 							<th scope="row">2</th>
 							<td>Jacob</td>
 							<td>Thornton</td>
 							<td>@fat</td>
+							<td>Otto</td>
+							<td>@mdo</td>
 							<td>Otto</td>
 							<td>@mdo</td>
 						</tr>
@@ -134,18 +140,6 @@
 							<label for="inputDate">Date</label> 
 							<input type="text" class="form-control" id="inputDate" placeholder="Date">
 						</div>
-<!-- 						<div class="form-group col-md-2"> -->
-<!-- 							<label for="inputSite">Site</label>  -->
-<!-- 							<select id="inputSite" class="form-control"> -->
-<!-- 								<option selected>Choose...</option> -->
-<!-- 								<option value="elevenia">elevenia</option> -->
-<!-- 								<option value="tokopedia">tokopedia</option> -->
-<!-- 								<option value="shopee">shopee</option> -->
-<!-- 								<option value="lazada">lazada</option> -->
-<!-- 								<option value="blibli">blibli</option> -->
-<!-- 							</select> -->
-<!-- 						</div> -->
-						
 						<div class="form-group col-md-2">
 							<label for="inputElevenia">elevenia</label> 
 							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia">
@@ -218,32 +212,7 @@
 	        data["inputDevice"] = $("#inputDevice").val();
 	        
 	        alert(data["inputSite"]);
-	        
-	        
-	        $.ajax({
-				type : "GET",
-				url : window.location + "/api/ajax/getAlexaList",
-				success: function(result){
-					alert(result.status);
-					if(result.status == "Done"){
-						alert(result.status);
-// 						$('#getResultDiv ul').empty();
-// 						var custList = "";
-// 						$.each(result.data, function(i, custoapimer){
-// 							var customer = "- Customer with Id = " + i + ", firstname = " + customer.firstname + ", lastName = " + customer.lastname + "<br>";
-// 							$('#getResultDiv .list-group').append(customer)
-// 				        });
-						console.log("Success: ", result);
-					}else{
-// 						$("#getResultDiv").html("<strong>Error</strong>");
-						console.log("Fail: ", result);
-					}
-				},
-				error : function(e) {
-// 					$("#getResultDiv").html("<strong>Error</strong>");
-					console.log("ERROR: ", e);
-				}
-			});	
+	         dd	
 	    });
 
 	});

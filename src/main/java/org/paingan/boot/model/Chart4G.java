@@ -11,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "tmp_chart_4G")
 public class Chart4G {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
