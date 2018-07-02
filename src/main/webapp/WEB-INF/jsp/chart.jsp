@@ -59,18 +59,46 @@
 	google.charts.load('current', {
 		'packages' : [ 'corechart','bar','line' ]
 	});
+	
 
 	// BAR CHART
 	google.charts.setOnLoadCallback(barChart);
+	
+	// LINE CHART
+	google.charts.setOnLoadCallback(lineChart);
+	
+	
 
 	function barChart() {
-		var data = 
-			google.visualization.arrayToDataTable([
-						[ 'Date', 'elevenia', 'tokopedia', 'shopee', 'lazada', 'blibli' ],
-						[ 'W1 JUNE 2018', 1000, 400, 200, 100, 900 ],
-						[ 'W2 JUNE 2018', 1170, 460, 250, 300, 100 ],
-						[ 'W3 JUNE 2018', 660, 1120, 300, 500, 700 ],
-						[ 'W4 JUNE 2018', 1030, 540, 350, 800, 900 ] ]);
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'date');
+		data.addColumn('number', 'elevenia');
+		data.addColumn('number', 'tokopedia');
+		data.addColumn('number', 'shopee');
+		data.addColumn('number', 'lazada');
+		data.addColumn('number', 'blibli');
+	
+		var dataArray = [];
+		
+		$.ajax({
+			type : "GET",
+			url : "/ajax/chart/4G/search",
+			dataType : "json",
+			success: function(result){
+				if(result.status == "OK"){
+					 $.each(result.data, function (i, obj) {
+						 dataArray.push([obj.date, obj.elevenia, obj.tokopedia, obj.shopee, obj.lazada, obj.blibli]);
+					 });
+					
+					 data.addRows(dataArray);
+				} else {
+					console.log("Fail: ", result);
+				}
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			}
+		});	
 
 		var options = {
 			chart : {
@@ -90,8 +118,7 @@
 		chart.draw(data, google.charts.Bar.convertOptions(options));
 	}
 	
-	// LINE CHART
-	google.charts.setOnLoadCallback(lineChart);
+
 	
 	function lineChart() {
 		var data = new google.visualization.DataTable();
