@@ -29,7 +29,7 @@
 		        <a class="nav-link" href="/form">Data</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link disabled" href="javascript:void(0);">Login</a>
+		        <a class="nav-link active" href="/sign-up">Sign up</a>
 		      </li>    
 		    </ul>
 		 </div>

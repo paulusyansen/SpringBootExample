@@ -2,9 +2,6 @@ package org.paingan.boot.controller;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.paingan.boot.service.ChartAlexaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,5 +48,11 @@ public class MainController{
 		model.addAttribute("title", this.title);
 		model.addAttribute("alexa",chartAlexaService.searchV2("showYn:1"));
 		return "form";
+	}
+	
+	@RequestMapping(value="/signup")
+	public String signup(Model model) throws Exception  {
+		model.addAttribute("title", this.title);
+		return "signup";
 	}
 }
