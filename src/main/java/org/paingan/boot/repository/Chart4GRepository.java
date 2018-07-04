@@ -1,4 +1,4 @@
-package org.paingan.boot.dao;
+package org.paingan.boot.repository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.paingan.boot.dao;
+package org.paingan.boot.repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

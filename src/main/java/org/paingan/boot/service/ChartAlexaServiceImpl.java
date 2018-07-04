@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.paingan.boot.dao.ChartAlexaRepository;
-import org.paingan.boot.dao.ChartAlexaSpecificationBuilder;
 import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.repository.ChartAlexaRepository;
+import org.paingan.boot.repository.ChartAlexaSpecificationBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;

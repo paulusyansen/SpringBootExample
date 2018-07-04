@@ -2,8 +2,8 @@ package org.paingan.boot.service;
 
 import java.util.List;
 
-import org.paingan.boot.dao.Chart4GRepository;
 import org.paingan.boot.dto.ChartDTO;
+import org.paingan.boot.repository.Chart4GRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package org.paingan.boot.dao;
+package org.paingan.boot.repository;
 
 import org.paingan.boot.model.ApplicationUser;
 import org.springframework.data.jpa.repository.JpaRepository;

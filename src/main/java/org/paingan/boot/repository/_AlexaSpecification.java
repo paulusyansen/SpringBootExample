@@ -1,20 +1,20 @@
-package org.paingan.boot.dao;
+package org.paingan.boot.repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.model.Alexa;
 import org.paingan.boot.util.SpecSearchCriteria;
 import org.paingan.constant.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;
 
-public class ChartAlexaSpecification implements Specification<ChartAlexa>{
+public class _AlexaSpecification implements Specification<Alexa>{
 	
 	private SpecSearchCriteria criteria;
 
-	public ChartAlexaSpecification(final SpecSearchCriteria criteria) {
+	public _AlexaSpecification(final SpecSearchCriteria criteria) {
 		super();
 		this.criteria = criteria;
 	}
@@ -24,7 +24,7 @@ public class ChartAlexaSpecification implements Specification<ChartAlexa>{
 	}
 
 	@Override
-	public Predicate toPredicate(final Root<ChartAlexa> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
+	public Predicate toPredicate(final Root<Alexa> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
 		
 		if(SearchOperation.ORDER_ASC.equals(criteria.getOperation())) {
 			query.orderBy(builder.asc(root.get( criteria.getValue().toString() )));

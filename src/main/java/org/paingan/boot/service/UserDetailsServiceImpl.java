@@ -1,7 +1,7 @@
 package org.paingan.boot.service;
 
-import org.paingan.boot.dao.UserRepository;
 import org.paingan.boot.model.ApplicationUser;
+import org.paingan.boot.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,5 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return new User(applicationUser.getUsername(), applicationUser.getPassword(), emptyList());
     }
+    
+    
     
 }

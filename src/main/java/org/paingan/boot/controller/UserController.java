@@ -1,7 +1,7 @@
 package org.paingan.boot.controller;
 
-import org.paingan.boot.dao.UserRepository;
 import org.paingan.boot.model.ApplicationUser;
+import org.paingan.boot.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
