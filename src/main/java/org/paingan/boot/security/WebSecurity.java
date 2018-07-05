@@ -21,36 +21,17 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
-    private UserDetailsService userDetailsService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+	private UserDetailsService userDetailsService;
     
-//    @Autowired
-//	private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Autowired
-	private DataSource dataSource;
-	
-	private String usersQuery = "select username, password, active from user where username=?";
-	
-	private String rolesQuery = "select u.email, r.role from user u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.id=r.role_id) where u.username=?";
 
     public WebSecurity(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
-
-    
-//    @Override
-//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.
-//			jdbcAuthentication()
-//				.usersByUsernameQuery(usersQuery)
-//				.authoritiesByUsernameQuery(rolesQuery)
-//				.dataSource(dataSource)
-//				.passwordEncoder(bCryptPasswordEncoder);
-//		
-//		System.out.println("configure jdbcAuthentication STARTED");
-//	}
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -79,10 +60,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     	
     	http.
 		authorizeRequests()
-			.antMatchers("/").permitAll()
-			.antMatchers("/login").permitAll()
-			.antMatchers("/chart").permitAll()
-			.antMatchers("/form**")
+			.antMatchers("/","/login").permitAll()
+			.antMatchers("/form").hasRole("ADMIN")
+			.antMatchers("/chart")
 			.authenticated().and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
@@ -101,6 +81,17 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
+    
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        //auth.userDetailsService(userDetailsService);
+        
+        auth.inMemoryAuthentication()
+        .withUser("admin").password("password").roles("ADMIN")
+        .and()
+        .withUser("admin").password("admin").roles("ADMIN");
+    }
+
 //
 //	@Bean
 //	CorsConfigurationSource corsConfigurationSource() {

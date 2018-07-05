@@ -16,7 +16,7 @@ public class MainController extends BaseController{
 	private ChartAlexaService chartAlexaService;
 
 
-	@RequestMapping("/")
+	@RequestMapping(value= {"/","/access-denied"})
 	public String welcome(Map<String, Object> model) throws Exception {
 		model.put("title", this.title);
 		return "main";
