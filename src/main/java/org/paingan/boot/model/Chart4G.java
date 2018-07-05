@@ -1,5 +1,7 @@
 package org.paingan.boot.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tmp_chart_4G")
-public class Chart4G {
+public class Chart4G implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,15 +35,6 @@ public class Chart4G {
 
 	@Column(name = "show_yn")
 	private int showYn;
-	
-	public Chart4G(String date, int elevenia, int tokopedia, int shopee, int lazada, int blibli){
-		this.date = date;
-		this.elevenia = elevenia;
-		this.tokopedia = tokopedia;
-		this.shopee = shopee;
-		this.lazada = lazada;
-		this.blibli = blibli;
-	}
 
 	public int getId() {
 		return id;

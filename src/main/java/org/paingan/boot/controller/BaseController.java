@@ -7,6 +7,6 @@ import org.springframework.stereotype.Controller;
 public class BaseController {
 
 	// inject via application.properties
-	@Value("${header.title}")
-	protected String title = "Charts";
+	@Value("${header.title:Speed Monitoring Tools}")
+	protected String title;
 }

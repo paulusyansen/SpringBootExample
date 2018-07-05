@@ -17,7 +17,7 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
 	@Autowired
 	private ChartAlexaRepository chartAlexaRepository;
 	
-	public List<ChartAlexa> searchV2(String search) {
+	public List<ChartAlexa> search(String search) {
 		ChartAlexaSpecificationBuilder builder = new ChartAlexaSpecificationBuilder();
 		Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(search + ",");

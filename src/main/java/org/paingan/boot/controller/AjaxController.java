@@ -19,38 +19,13 @@ public class AjaxController {
 	
 	@Autowired
 	private Chart4GService chart4GService;
-	
-	
-	
-//	@GetMapping(path = "/getAlexaList")
-//	public @ResponseBody Response getAlexaListA() {
-//		List<ChartAlexa> alexaList = chartAlexaService.findAllAlexa();
-//		Response response = new Response();
-//		response.setStatusOK();
-//		response.setData(alexaList);
-//		return response;
-//	}
-//	
-//	@GetMapping(path="/alexa/list")
-//	public List<ChartAlexa> getAlexaList() {
-//		return chartAlexaService.findAllAlexa();
-//	}
-//	
-//	@GetMapping(path="/alexa/id/{id}")
-//	public @ResponseBody Response getAlexaListById(@PathVariable("id") int id ) {
-//		Response response = new Response();
-//		response.setStatusOK();
-//		response.setData(chartAlexaService.findChartAlexaById(id));
-//		
-//		return response ;
-//	}
 
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/chart/alexa/search")
 	public @ResponseBody Response search(@RequestParam(value = "q") String search) {
         Response response = new Response();
 		response.setStatusOK();
-		response.setData(chartAlexaService.searchV2(search));
+		response.setData(chartAlexaService.search(search));
 		
 		return response ;
 	}

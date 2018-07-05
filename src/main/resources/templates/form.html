@@ -23,9 +23,9 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="/chart">Chart</a>
 			      </li>
-			      <li class="nav-item">
+			      <li class="nav-item" th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
 			        <a class="nav-link active" href="/form">Data</a>
-			      </li>  
+			      </li>
 			      <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
 			      	<a class="nav-link"  th:href="@{/logout}">Log out</a>
 			      </li>
@@ -96,6 +96,7 @@
 							<th scope="col">#</th>
 							<th scope="col">Date</th>
 							<th scope="col">Page</th>
+							<th scope="col">Device</th>
 							<th scope="col">elevenia</th>
 							<th scope="col">tokopedia</th>
 							<th scope="col">shopee</th>
@@ -104,26 +105,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-							<td>Otto</td>
-							<td>@mdo</td>
-						</tr>
+						<tr th:each="chart4G : ${chart4G}">
+							<td th:text="${chart4G.id}">id</td>
+					        <td th:text="${chart4G.date}">date</td>
+					        <td th:text="${chart4G.page}">page</td>
+					        <td th:text="${chart4G.device}">device</td>
+					        <td th:text="${chart4G.elevenia}">elevenia</td>
+					        <td th:text="${chart4G.tokopedia}">tokopedia</td>
+					        <td th:text="${chart4G.shopee}">shopee</td>
+					        <td th:text="${chart4G.lazada}">lazada</td>
+					        <td th:text="${chart4G.blibli}">blibli</td>
+					     </tr>
 					</tbody>
 				</table>
 			</div>
@@ -186,17 +178,6 @@
 				        <td th:text="${alexa.lazada}">lazada</td>
 				        <td th:text="${alexa.blibli}">blibli</td>
 				     </tr>
-<!-- 						<c:forEach var="alexa" items="${alexa}"> -->
-<!-- 						    <tr> -->
-<!-- 								<th scope="row"><c:out value="${alexa.id}" /></th> -->
-<!-- 								<td><c:out value="${alexa.date}" /></td> -->
-<!-- 								<td><c:out value="${alexa.elevenia}" /></td> -->
-<!-- 								<td><c:out value="${alexa.tokopedia}" /></td> -->
-<!-- 								<td><c:out value="${alexa.shopee}" /></td> -->
-<!-- 								<td><c:out value="${alexa.lazada}" /></td> -->
-<!-- 								<td><c:out value="${alexa.blibli}" /></td> -->
-<!-- 							</tr> -->
-<!-- 						</c:forEach> -->
 					</tbody>
 				</table>
 			</div>

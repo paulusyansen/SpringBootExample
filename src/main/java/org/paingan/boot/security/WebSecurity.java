@@ -60,10 +60,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     	
     	http.
 		authorizeRequests()
-			.antMatchers("/","/login").permitAll()
-			.antMatchers("/form").hasRole("ADMIN")
-			.antMatchers("/chart")
-			.authenticated().and().csrf().disable().formLogin()
+			.antMatchers("/chart").hasAnyRole("USER","ADMIN")
+			.antMatchers("/form").hasRole("ADMIN").and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
 			.usernameParameter("username")
@@ -71,7 +69,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			.and().logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/").and().exceptionHandling()
-			.accessDeniedPage("/access-denied");
+			.accessDeniedPage("/login?accessdenied=true");
 
     	
     	
@@ -81,22 +79,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
-    
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        //auth.userDetailsService(userDetailsService);
-        
-        auth.inMemoryAuthentication()
-        .withUser("admin").password("password").roles("ADMIN")
-        .and()
-        .withUser("admin").password("admin").roles("ADMIN");
-    }
 
-//
-//	@Bean
-//	CorsConfigurationSource corsConfigurationSource() {
-//		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//		source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
-//		return source;
-//	}
+
 }

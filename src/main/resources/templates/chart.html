@@ -28,9 +28,9 @@
 			      <li class="nav-item">
 			        <a class="nav-link active" href="/chart">Chart</a>
 			      </li>
-			      <li class="nav-item">
+			      <li class="nav-item" th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
 			        <a class="nav-link" href="/form">Data</a>
-			      </li>  
+			      </li> 
 			      <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
 			      	<a class="nav-link"  th:href="@{/logout}">Log out</a>
 			      </li>
@@ -43,9 +43,9 @@
 
 	<div class="container-fluid">
 		<br />
-		<div class="alert alert-primary">
+		<!-- div class="alert alert-primary">
 	    <strong>Primary!</strong> Indicates an important action.
-	  	</div>
+	  	</div-->
 		<div id="columnchart_material"></div>
 		<div id="linechart_material"></div>
 	</div>
@@ -81,6 +81,20 @@
 		data.addColumn('number', 'lazada');
 		data.addColumn('number', 'blibli');
 	
+		var options = {
+			chart : {
+				title : 'Mobile Site Speed Comparison',
+				subtitle : 'in miliseconds (ms)'
+			},
+	       	bars: 'vertical',
+	        width : 800,
+	        height: 400,
+	        vAxis: {format: ''},
+			colors : [ '#ff7d1d', '#42b549', '#F15A29', '#1a9cb7', '#0095da' ]
+		};
+
+		var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+		
 		var dataArray = [];
 		
 		$.ajax({
@@ -94,6 +108,7 @@
 					 });
 					
 					 data.addRows(dataArray);
+					 chart.draw(data, google.charts.Bar.convertOptions(options));
 				} else {
 					console.log("Fail: ", result);
 				}
@@ -103,22 +118,7 @@
 			}
 		});	
 
-		var options = {
-			chart : {
-				title : 'Mobile Site Speed Comparison',
-				subtitle : 'in miliseconds (ms)'
-			},
-	       	bars: 'vertical',
-	        width : 800,
-	        height: 400,
-	        vAxis: {format: ''},
-			colors : [ '#ff7d1d', '#42b549', '#F15A29', '#1a9cb7', '#0095da' ]
-		};
-
-		var chart = new google.charts.Bar(document
-				.getElementById('columnchart_material'));
-
-		chart.draw(data, google.charts.Bar.convertOptions(options));
+		//chart.draw(data, google.charts.Bar.convertOptions(options));
 	}
 	
 
@@ -131,28 +131,7 @@
 		data.addColumn('number', 'shopee');
 		data.addColumn('number', 'lazada');
 		data.addColumn('number', 'blibli');
-	
-		var dataArray = [];
 		
-		$.ajax({
-			type : "GET",
-			url : "/ajax/chart/alexa/search?q=sortasc:date,showYn:1",
-			dataType : "json",
-			success: function(result){
-				if(result.status == "OK"){
-					 $.each(result.data, function (i, obj) {
-						 dataArray.push([obj.date, obj.elevenia, obj.tokopedia, obj.shopee, obj.lazada, obj.blibli]);
-					 });
-					
-					 data.addRows(dataArray);
-				} else {
-					console.log("Fail: ", result);
-				}
-			},
-			error : function(e) {
-				console.log("ERROR: ", e);
-			}
-		});	
 		
 		var options = {
 			chart : {
@@ -166,7 +145,30 @@
 		};
 
 		var chart = new google.charts.Line(document.getElementById('linechart_material'));
-		chart.draw(data, google.charts.Line.convertOptions(options));
+		
+		var dataArray = [];
+		
+		$.ajax({
+			type : "GET",
+			url : "/ajax/chart/alexa/search?q=sortasc:id,showYn:1",
+			dataType : "json",
+			success: function(result){
+				if(result.status == "OK"){
+					 $.each(result.data, function (i, obj) {
+						 dataArray.push([obj.date, obj.elevenia, obj.tokopedia, obj.shopee, obj.lazada, obj.blibli]);
+					 });
+					
+					 data.addRows(dataArray);
+					 chart.draw(data, google.charts.Line.convertOptions(options));
+				} else {
+					console.log("Fail: ", result);
+				}
+			},
+			error : function(e) {
+				console.log("ERROR: ", e);
+			}
+		});	
+		//chart.draw(data, google.charts.Line.convertOptions(options));
 	}
 	</script>
 </body>
