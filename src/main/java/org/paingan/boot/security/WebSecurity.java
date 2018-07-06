@@ -2,6 +2,7 @@ package org.paingan.boot.security;
 
 import javax.sql.DataSource;
 
+import org.paingan.constant.AuthorityName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,8 +61,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     	
     	http.
 		authorizeRequests()
-			.antMatchers("/chart").hasAnyRole("USER","ADMIN")
-			.antMatchers("/form").hasRole("ADMIN").and().csrf().disable().formLogin()
+			.antMatchers("/chart").hasAnyRole(AuthorityName.USER.getText(),AuthorityName.ADMIN.getText())
+			.antMatchers("/form").hasRole(AuthorityName.ADMIN.getText()).and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
 			.usernameParameter("username")

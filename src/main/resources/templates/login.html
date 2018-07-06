@@ -42,9 +42,13 @@
 		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
 	</form-->	
 	
-		<div class="alert alert-warning" role="alert" th:if="${param.accessdenied}">
-		  	<strong>Access Denied!!</strong>
-		</div>
+	<div class="alert alert-danger" role="alert" th:if="${param.accessdenied}">
+		<strong>Access Denied!!</strong>
+	</div>
+		
+	<div class="alert alert-danger" role="alert" th:if="${param.error}">
+		<strong>Email or Password invalid, please verify</strong>
+	</div>
 
 	<div class="container">
 		<div class="jumbotron">
@@ -56,9 +60,9 @@
 			<input type="text" id="username" name="username"  th:placeholder="Username" class="form-control" /> <br/> 
 			<input type="password"  th:placeholder="Password" id="password" name="password" class="form-control" /> <br /> 
 				
-			<div align="center" th:if="${param.error}">
-				<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
-			</div>
+<!-- 			<div align="center" th:if="${param.error}"> -->
+<!-- 				<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p> -->
+<!-- 			</div> -->
 			<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
 		</form>
 		</div>
