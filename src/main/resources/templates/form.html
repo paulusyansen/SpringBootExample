@@ -3,15 +3,19 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<title th:text="${title}"></title>
+
 	<!-- Access the bootstrap Css like this, Spring boot will handle the resource mapping automcatically -->
 	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="webjars/sweetalert2/dist/sweetalert2.min.css" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
 
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="/"  th:text="${title}"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
@@ -39,7 +43,7 @@
 
 
 		
-	<div class="container-fluid">
+	<main role="main" class="container">
 <!-- 		<div class="alert alert-warning" role="alert"> -->
 <!-- 		  This is a <strong>average</strong> score! -->
 <!-- 		</div> -->
@@ -184,7 +188,7 @@
 			</div>
 		</div>
 		<br />
-	</div>
+	</main>
 	
 	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>

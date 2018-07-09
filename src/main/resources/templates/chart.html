@@ -3,6 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 	
 <head>
+	<title th:text="${title}"></title>
 
 	<!-- Access the bootstrap Css like this, Spring boot will handle the resource mapping automcatically -->
 	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
@@ -11,11 +12,11 @@
 	
 	<!--Load the AJAX API-->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
 		<a class="navbar-brand" href="/"  th:text="${title}"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 			<span class="navbar-toggler-icon"></span>
@@ -41,14 +42,14 @@
 		 </div>
 	</nav>
 
-	<div class="container-fluid">
+	<main role="main" class="container">
 		<br />
 		<!-- div class="alert alert-primary">
 	    <strong>Primary!</strong> Indicates an important action.
 	  	</div-->
-		<div id="columnchart_material"></div>
-		<div id="linechart_material"></div>
-	</div>
+		<div id="columnchart_material" class="chart"></div>
+		<div id="linechart_material" class="chart"></div>
+	</main>
 	
 	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -87,8 +88,6 @@
 				subtitle : 'in miliseconds (ms)'
 			},
 	       	bars: 'vertical',
-	        width : 800,
-	        height: 400,
 	        vAxis: {format: ''},
 			colors : [ '#ff7d1d', '#42b549', '#F15A29', '#1a9cb7', '#0095da' ]
 		};
@@ -138,8 +137,6 @@
 				title : 'Alexa | Average Load Time',
 				subtitle : 'in milliseconds (ms)'
 			},
-			width : 800,
-			height : 400,
 			vAxis: {format: ''},
 			colors : [ '#ff7d1d', '#42b549', '#F15A29', '#1a9cb7', '#0095da' ]
 		};
@@ -169,6 +166,14 @@
 			}
 		});	
 		//chart.draw(data, google.charts.Line.convertOptions(options));
+		
+		$(window).resize(function(){
+			// BAR CHART
+			google.charts.setOnLoadCallback(barChart);
+			
+			// LINE CHART
+			google.charts.setOnLoadCallback(lineChart);
+		});
 	}
 	</script>
 </body>

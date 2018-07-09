@@ -6,3 +6,17 @@ h1{
 h2{
 	color:#FF0000;
 }
+
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+.chart {
+  width: 100%; 
+  height: 100%;
+}
+
+.row {
+  margin:0 !important;
+}
