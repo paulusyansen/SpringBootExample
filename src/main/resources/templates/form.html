@@ -4,7 +4,6 @@
 <head>
 	<title th:text="${title}"></title>
 
-	<!-- Access the bootstrap Css like this, Spring boot will handle the resource mapping automcatically -->
 	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="webjars/sweetalert2/dist/sweetalert2.min.css" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
@@ -104,11 +103,13 @@
 					<div class="form-row">
 						<div class="form-group col-md-2">
 							<label for="inputDate">Date</label> 
-							<input type="text" class="form-control" id="inputDate" placeholder="Date" th:field="*{date}">
+							<input type="text" class="form-control" id="inputDate" th:placeholder="Date" th:field="*{date}">
+							<label th:if="${#fields.hasErrors('date')}" th:errors="date"
+								class="validation-message"></label>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputElevenia">elevenia</label> 
-							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia" th:field="*{elevenia}">
+							<input type="text" class="form-control" id="inputElevenia" th:placeholder="elevenia" th:field="*{elevenia}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputTokopedia">tokopedia</label> 

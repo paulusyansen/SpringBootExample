@@ -1,5 +1,8 @@
 package org.paingan.boot.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.paingan.boot.model.ApplicationUser;
 import org.paingan.boot.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,11 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import static java.util.Collections.emptyList;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

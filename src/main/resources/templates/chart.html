@@ -5,7 +5,6 @@
 <head>
 	<title th:text="${title}"></title>
 
-	<!-- Access the bootstrap Css like this, Spring boot will handle the resource mapping automcatically -->
 	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 	
@@ -17,13 +16,6 @@
 <body>
 
 	<div th:replace="menu :: main"></div>
-
-<!-- 	<main role="main" class="container"> -->
-		<br />
-		<!-- div class="alert alert-primary">
-	    <strong>Primary!</strong> Indicates an important action.
-	  	</div-->
-	  	
 
 	<div class="container-fluid">
 		<div class="row">
