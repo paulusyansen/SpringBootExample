@@ -30,5 +30,9 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
         
         return chartAlexaRepository.findAll(spec);
 	}
+	
+	public ChartAlexa save(ChartAlexa chartAlexa) {
+		return chartAlexaRepository.save(chartAlexa);
+	}
 		
 }

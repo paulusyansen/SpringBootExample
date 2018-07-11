@@ -100,34 +100,34 @@
 		<div class="card position-relative">
 			<div class="card-header"><strong>Alexa - Average Load Time</strong></div>
 			<div class="card-body">
-				<form>
+				<form action="#" th:action="@{/form}" th:object="${chartAlexa}" method="post">
 					<div class="form-row">
 						<div class="form-group col-md-2">
 							<label for="inputDate">Date</label> 
-							<input type="text" class="form-control" id="inputDate" placeholder="Date">
+							<input type="text" class="form-control" id="inputDate" placeholder="Date" th:field="*{date}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputElevenia">elevenia</label> 
-							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia">
+							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia" th:field="*{elevenia}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputTokopedia">tokopedia</label> 
-							<input type="text" class="form-control" id="inputTokopedia" placeholder="tokopedia">
+							<input type="text" class="form-control" id="inputTokopedia" placeholder="tokopedia" th:field="*{tokopedia}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputShopee">shopee</label> 
-							<input type="text" class="form-control" id="inputShopee" placeholder="shopee">
+							<input type="text" class="form-control" id="inputShopee" placeholder="shopee" th:field="*{shopee}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputLazada">lazada</label> 
-							<input type="text" class="form-control" id="inputLazada" placeholder="lazada">
+							<input type="text" class="form-control" id="inputLazada" placeholder="lazada" th:field="*{lazada}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputBlibli">blibli</label> 
-							<input type="text" class="form-control" id="inputBlibli" placeholder="blibli">
+							<input type="text" class="form-control" id="inputBlibli" placeholder="blibli" th:field="*{blibli}">
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary" id="form-add-alexa">Add</button>
+					<button type="submit" class="btn btn-primary" id="form-add-alexa">Add</button>
 				</form>
 			</div>
 			<div class="card-body">

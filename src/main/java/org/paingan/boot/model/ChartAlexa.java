@@ -27,7 +27,7 @@ public class ChartAlexa implements Serializable{
 	private int blibli;
 	
 	@Column(name="show_yn")
-	private int showYn;
+	private int showYn = 1;
 	
 	public int getId() {
 		return id;

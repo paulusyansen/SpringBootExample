@@ -2,11 +2,16 @@ package org.paingan.boot.controller;
 
 import java.util.Map;
 
+import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.model.Response;
 import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -47,8 +52,22 @@ public class MainController extends BaseController{
         mav.addObject("title", this.title);
         mav.addObject("alexa",chartAlexaService.search("showYn:1"));
         mav.addObject("chart4G",chart4GService.findAll());
+        mav.addObject("chartAlexa", new ChartAlexa());
         mav.setViewName("form");
         
         return mav;
+	}
+	
+	@RequestMapping(method = RequestMethod.POST, value = "/form")
+	public ModelAndView saveAlexa(@ModelAttribute ChartAlexa chartAlexa) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("title", this.title);
+        mav.addObject("alexa",chartAlexaService.search("showYn:1"));
+        mav.addObject("chart4G",chart4GService.findAll());
+        mav.addObject("chartAlexa", new ChartAlexa());
+        
+		mav.addObject("chartAlexa", chartAlexaService.save(chartAlexa));
+		mav.setViewName("chart");
+		return mav;
 	}
 }
