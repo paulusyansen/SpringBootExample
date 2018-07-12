@@ -22,7 +22,7 @@ public class AjaxController {
 
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/chart/alexa/search")
-	public @ResponseBody Response search(@RequestParam(value = "q") String search) {
+	public @ResponseBody Response searchAlexa(@RequestParam(value = "q") String search) {
         Response response = new Response();
 		response.setStatusOK();
 		response.setData(chartAlexaService.search(search));
@@ -38,4 +38,24 @@ public class AjaxController {
 		
 		return response ;
 	}
+	
+//	@RequestMapping(method = RequestMethod.POST, value = "/chart/alexa/save")
+//	public @ResponseBody Response saveAlexa(@ModelAttribute ChartAlexa chartAlexa) {
+//        Response response = new Response();
+//		response.setStatusOK();
+//		response.setData(chartAlexaService.save(chartAlexa));
+//		
+//		return response ;
+//	}
+	
+//	@RequestMapping(value="/form", method=RequestMethod.POST)
+//    public String customerSubmit(@ModelAttribute Customer customer, Model model) {
+//         
+//        model.addAttribute("customer", customer);
+//        String info = String.format("Customer Submission: id = %d, firstname = %s, lastname = %s", 
+//                                        customer.getId(), customer.getFirstname(), customer.getLastname());
+//        log.info(info);
+//         
+//        return "result";
+//    }
 }

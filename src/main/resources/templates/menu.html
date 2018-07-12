@@ -9,21 +9,26 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		    <ul class="navbar-nav">
-			      <li class="nav-item">
-			        <a class="nav-link" th:classappend="${currentPage == 'home'} ? 'active'" href="/" th:text="#{menu.home}">Home</a>
-			      </li>
-			      <li class="nav-item">
-			        <a class="nav-link" th:classappend="${currentPage == 'chart'} ? 'active'" href="/chart" th:text="#{menu.chart}">Chart</a>
-			      </li>
-			      <li class="nav-item" th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
-			        <a class="nav-link" th:classappend="${currentPage == 'form'} ? 'active'" href="/form" th:text="#{menu.form}">Data</a>
-			      </li>
-			      <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
-			      	<a class="nav-link"  th:href="@{/logout}" th:text="#{menu.logout}">Log out</a>
-			      </li>
-			      <li class="nav-item" th:if="${#authorization.expression('isAnonymous()')}">
-			      	<a class="nav-link" th:classappend="${currentPage == 'login'} ? 'active'" th:href="@{/login}" th:text="#{menu.login}">Log in</a>
-			      </li>
+				<li class="nav-item">
+			    	<a class="nav-link" th:classappend="${currentPage == 'home'} ? 'active'" th:href="@{/}" th:text="#{menu.home}">Home</a>
+			   	</li>
+			  	<li class="nav-item">
+			        <a class="nav-link" th:classappend="${currentPage == 'chart'} ? 'active'" th:href="@{/chart}" th:text="#{menu.chart}">Chart</a>
+			   	</li>
+			   	<li class="nav-item dropdown" th:classappend="${currentPage == 'form4G' || currentPage == 'formAlexa'} ? 'active'" 
+			      	th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+		        	<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.form}">Data</a>
+		            <div class="dropdown-menu" aria-labelledby="dropdown01">
+		            	<a class="dropdown-item" th:classappend="${currentPage == 'form4G'} ? 'active'" th:href="@{/form4G}" th:text="#{menu.form.4g}">Data 4G</a>
+		              	<a class="dropdown-item" th:classappend="${currentPage == 'formAlexa'} ? 'active'" th:href="@{/formAlexa}" th:text="#{menu.form.alexa}">Data Alexa</a>
+		            </div>
+		       	</li>
+			    <li class="nav-item" th:if="${#authorization.expression('isAuthenticated()')}">
+			    	<a class="nav-link"  th:href="@{/logout}" th:text="#{menu.logout}">Log out</a>
+			   	</li>
+			   	<li class="nav-item" th:if="${#authorization.expression('isAnonymous()')}">
+			    	<a class="nav-link" th:classappend="${currentPage == 'login'} ? 'active'" th:href="@{/login}" th:text="#{menu.login}">Log in</a>
+			   	</li>
 			</ul>
 		 </div>
 	</nav>

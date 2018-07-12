@@ -1,5 +1,6 @@
 package org.paingan.boot.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -9,7 +10,12 @@ import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,11 +33,6 @@ public class MainController extends BaseController{
 	@RequestMapping(value = "/")
 	public String welcome(Map<String, Object> model) throws Exception {
 		model.put("title", this.title);
-		return "main";
-	}
-	
-	@RequestMapping(value="/about")
-	public String about(Map<String, Object> model) throws Exception {
 		return "main";
 	}
 	
@@ -58,20 +59,57 @@ public class MainController extends BaseController{
         return mav;
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/form")
-	public ModelAndView saveAlexa(@Valid ChartAlexa chartAlexa,  BindingResult bindingResult) {
+	@RequestMapping(path="/form{id}")
+	public ModelAndView formChart(@PathVariable("id") String id ) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("title", this.title);
-        mav.addObject("alexa",chartAlexaService.search("showYn:1"));
-        mav.addObject("chart4G",chart4GService.findAll());
-        //mav.addObject("chartAlexa", new ChartAlexa());
+        mav.addObject("title", this.title);
+        mav.addObject("chartAlexa", new ChartAlexa());
         
-        if (bindingResult.hasErrors()) {
-        	mav.setViewName("form");
-		} else {
-		mav.addObject("chartAlexa", chartAlexaService.save(chartAlexa));
-		mav.setViewName("chart");
-		}
-		return mav;
+        if("Alexa".equals(id)) {
+        	mav.addObject("alexa",chartAlexaService.search("showYn:1"));
+        	mav.setViewName("formAlexa");
+        } else if("4G".equals(id)) {
+        	mav.addObject("chart4G",chart4GService.findAll());
+        	mav.setViewName("form4G");
+        } else {
+        	mav.setViewName("main");
+        }
+        
+        return mav;
 	}
+	
+//	@PostMapping("/form")
+//	public ModelAndView saveAlexa(@Valid @ModelAttribute("chartAlexa") ChartAlexa chartAlexa,  BindingResult bindingResult) {
+//		ModelAndView mav = new ModelAndView();
+//		mav.addObject("title", this.title);
+//        mav.addObject("alexa",chartAlexaService.search("showYn:1"));
+//        mav.addObject("chart4G",chart4GService.findAll());
+//        mav.addObject("chartAlexa", new ChartAlexa());
+//        
+//        if (bindingResult.hasErrors()) {
+//        	mav.setViewName("formAlexa");
+//		} else {
+//		mav.addObject("chartAlexa", chartAlexaService.save(chartAlexa));
+//		mav.setViewName("chart");
+//		}
+//		return mav;
+//	}
+	
+	@PostMapping("/form")
+    public String checkPersonInfo(@Valid @ModelAttribute("chartAlexa") ChartAlexa chartAlexa, BindingResult bindingResult, ModelMap model) {
+		model.addAttribute("chartAlexa", chartAlexa);
+        if (bindingResult.hasErrors()) {
+        	
+        	List<ObjectError> errorList = bindingResult.getAllErrors();
+        	
+        	for (ObjectError objectError : errorList) {
+				System.out.println(objectError.getObjectName()+" "+objectError.getCode()+" "+objectError.getDefaultMessage());
+			}
+        	
+        	
+            return "formAlexa";
+        }
+
+        return "redirect:/";
+    }
 }

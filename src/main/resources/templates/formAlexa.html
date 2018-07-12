@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:with="currentPage='formAlexa'">
+
+<head>
+	<title th:text="${title}"></title>
+
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="webjars/sweetalert2/dist/sweetalert2.min.css" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+	
+	<div th:replace="menu :: main"></div>
+
+	<main role="main" class="container">
+		<div class="row">
+			<div class="col-md-12 order-md-1">
+			<h4 class="mb-3"><strong>Alexa - Average Load Time</strong></h4>
+				<form action="#" th:action="@{/form}" th:object="${chartAlexa}" method="post">
+					<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+		<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+	</div>
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<label for="inputDate">Date</label> 
+							<input type="text" class="form-control" id="inputDate" th:placeholder="Date" th:field="*{date}">
+							<label th:if="${#fields.hasErrors('date')}" th:text="${#fields.errors('date')}" class="validation-message"></label>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputElevenia">elevenia</label> 
+							<input type="text" class="form-control" id="inputElevenia" th:placeholder="elevenia" th:field="*{elevenia}">
+							<label th:if="${#fields.hasErrors('elevenia')}" th:errors="elevenia"
+								class="validation-message"></label>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputTokopedia">tokopedia</label> 
+							<input type="text" class="form-control" id="inputTokopedia" placeholder="tokopedia" th:field="*{tokopedia}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputShopee">shopee</label> 
+							<input type="text" class="form-control" id="inputShopee" placeholder="shopee" th:field="*{shopee}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputLazada">lazada</label> 
+							<input type="text" class="form-control" id="inputLazada" placeholder="lazada" th:field="*{lazada}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputBlibli">blibli</label> 
+							<input type="text" class="form-control" id="inputBlibli" placeholder="blibli" th:field="*{blibli}">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary" id="form-add-alexa">Add</button>
+				</form>
+			</div>
+			</div>
+			
+			<hr class="mb-4">
+			
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Date</th>
+							<th scope="col">elevenia</th>
+							<th scope="col">tokopedia</th>
+							<th scope="col">shopee</th>
+							<th scope="col">lazada</th>
+							<th scope="col">blibli</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr th:each="alexa : ${alexa}">
+						<td th:text="${alexa.id}">id</td>
+				        <td th:text="${alexa.date}">date</td>
+				        <td th:text="${alexa.elevenia}">elevenia</td>
+				        <td th:text="${alexa.tokopedia}">tokopedia</td>
+				        <td th:text="${alexa.shopee}">shopee</td>
+				        <td th:text="${alexa.lazada}">lazada</td>
+				        <td th:text="${alexa.blibli}">blibli</td>
+				     </tr>
+					</tbody>
+				</table>
+			</div>
+	</main>
+	
+	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="webjars/sweetalert2/dist/sweetalert2.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function () {
+
+	    $("#form-add").click(function (e) {
+	        e.preventDefault();
+	        var data = {};
+	        data["inputDate"] = $("#inputDate").val();
+	        data["inputScore"] = $("#inputScore").val();
+	        data["inputSite"] = $("#inputSite").val();
+	        data["inputPage"] = $("#inputPage").val();
+	        data["inputDevice"] = $("#inputDevice").val();
+	        
+	        //alert(data["inputSite"]);
+	        swal(
+	        	'The Internet?',
+	        	'That thing is still around?',
+	        	'question'
+	       	);
+	    });
+
+	});
+	</script>
+	
+</body>
+
+</html>

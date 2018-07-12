@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -19,7 +20,7 @@ public class ChartAlexa implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@NotEmpty(message = "*Please provide a date")
+	@NotBlank(message = "*Please provide a date")
 	private String date;
 	
 	@NotNull(message = "*Please provide a valid elevenia score")
