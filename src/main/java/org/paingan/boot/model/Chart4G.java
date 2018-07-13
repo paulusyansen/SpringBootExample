@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "tmp_chart_4G")
@@ -21,10 +22,19 @@ public class Chart4G implements Serializable{
 	@NotBlank
 	private String date;
 
+	@NotNull
 	private int elevenia;
+	
+	@NotNull
 	private int tokopedia;
+	
+	@NotNull
 	private int shopee;
+	
+	@NotNull
 	private int lazada;
+	
+	@NotNull
 	private int blibli;
 
 	@NotBlank

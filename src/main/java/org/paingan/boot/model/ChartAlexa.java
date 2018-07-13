@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -23,23 +22,23 @@ public class ChartAlexa implements Serializable{
 	@NotBlank(message = "*Please provide a date")
 	private String date;
 	
-	@NotNull(message = "*Please provide a valid elevenia score")
+	@NotNull
 	private int elevenia;
 	
-	@NotNull(message = "*Please provide a valid tokopedia score")
+	@NotNull
 	private int tokopedia;
 	
-	@NotNull(message = "*Please provide a valid shopee score")
+	@NotNull
 	private int shopee;
 	
-	@NotNull(message = "*Please provide a valid lazada score")
+	@NotNull
 	private int lazada;
 	
-	@NotNull(message = "*Please provide a valid blibli score")
+	@NotNull
 	private int blibli;
 	
 	@Column(name="show_yn")
-	private int showYn = 1;
+	private int showYn = 1; // default 1
 	
 	public int getId() {
 		return id;
@@ -91,6 +90,6 @@ public class ChartAlexa implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Alexa [eid = " + id + ", date = " + date + ", elevenia = " + elevenia + ", tokopedia = " + tokopedia + ", shopee = " + shopee + ", blibli = " + blibli + ", showYn = " + showYn + "]";
+		return "Chart Alexa [id = " + id + ", date = " + date + ", elevenia = " + elevenia + ", tokopedia = " + tokopedia + ", shopee = " + shopee + ", blibli = " + blibli + ", showYn = " + showYn + "]";
 	}
 }

@@ -21,8 +21,8 @@
 			<h4 class="mb-3"><strong>Alexa - Average Load Time</strong></h4>
 				<form action="#" th:action="@{/form}" th:object="${chartAlexa}" method="post">
 					<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
-		<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
-	</div>
+						<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+					</div>
 					<div class="form-row">
 						<div class="form-group col-md-2">
 							<label for="inputDate">Date</label> 
@@ -32,8 +32,7 @@
 						<div class="form-group col-md-2">
 							<label for="inputElevenia">elevenia</label> 
 							<input type="text" class="form-control" id="inputElevenia" th:placeholder="elevenia" th:field="*{elevenia}">
-							<label th:if="${#fields.hasErrors('elevenia')}" th:errors="elevenia"
-								class="validation-message"></label>
+							<label th:if="${#fields.hasErrors('date')}" th:text="${#fields.errors('date')}" class="validation-message"></label>
 						</div>
 						<div class="form-group col-md-2">
 							<label for="inputTokopedia">tokopedia</label> 
