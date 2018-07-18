@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tmp_chart_4G")
+@Table(name = "chart_4G")
 public class Chart4G implements Serializable{
 	
 	@Id
