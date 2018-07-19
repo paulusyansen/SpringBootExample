@@ -17,6 +17,10 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
 	@Autowired
 	private ChartAlexaRepository chartAlexaRepository;
 	
+	/*
+	 * (non-Javadoc)
+	 * @see org.paingan.boot.service.ChartAlexaService#search(java.lang.String)
+	 */
 	public List<ChartAlexa> search(String search) {
 		ChartAlexaSpecificationBuilder builder = new ChartAlexaSpecificationBuilder();
 		Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),", Pattern.UNICODE_CHARACTER_CLASS);
@@ -31,6 +35,10 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
         return chartAlexaRepository.findAll(spec);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see org.paingan.boot.service.ChartAlexaService#save(org.paingan.boot.model.ChartAlexa)
+	 */
 	public ChartAlexa save(ChartAlexa chartAlexa) {
 		return chartAlexaRepository.save(chartAlexa);
 	}

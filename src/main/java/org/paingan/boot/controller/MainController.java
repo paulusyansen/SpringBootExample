@@ -78,23 +78,6 @@ public class MainController extends BaseController{
         return mav;
 	}
 	
-//	@PostMapping("/form")
-//	public ModelAndView saveAlexa(@Valid @ModelAttribute("chartAlexa") ChartAlexa chartAlexa,  BindingResult bindingResult) {
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("title", this.title);
-//        mav.addObject("alexa",chartAlexaService.search("showYn:1"));
-//        mav.addObject("chart4G",chart4GService.findAll());
-//        mav.addObject("chartAlexa", new ChartAlexa());
-//        
-//        if (bindingResult.hasErrors()) {
-//        	mav.setViewName("formAlexa");
-//		} else {
-//		mav.addObject("chartAlexa", chartAlexaService.save(chartAlexa));
-//		mav.setViewName("chart");
-//		}
-//		return mav;
-//	}
-	
 	@PostMapping("/form")
     public String checkPersonInfo(@Valid @ModelAttribute("chartAlexa") ChartAlexa chartAlexa, BindingResult bindingResult, ModelMap model) {
 		model.addAttribute("chartAlexa", chartAlexa);
@@ -106,10 +89,10 @@ public class MainController extends BaseController{
 				System.out.println(objectError.getObjectName()+" "+objectError.getCode()+" "+objectError.getDefaultMessage());
 			}
         	
-        	
             return "formAlexa";
+        } else {
+        	 chartAlexaService.save(chartAlexa);
+        	 return "formAlexa";
         }
-
-        return "redirect:/";
     }
 }
