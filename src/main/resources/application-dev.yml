@@ -1,6 +1,4 @@
 debug: false
-header:
-  title: Mobile Monitoring Tools
 server:
   error:
     whitelabel:
@@ -17,7 +15,7 @@ spring:
     username: yup5s49ny1t8zgee
   devtools:
     livereload:
-      enabled: 'true '
+      enabled: true
     restart:
       enabled: true
   jpa:
@@ -29,8 +27,6 @@ spring:
   resources:
     cache:
       period: 0
-  template:
-    cache: false
   thymeleaf:
     cache: false
     prefix: classpath:/templates/

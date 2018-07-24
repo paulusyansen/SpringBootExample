@@ -1,6 +1,3 @@
-header:
-  title: Mobile Monitoring Tools
-
 server:
   error:
     whitelabel:
@@ -21,8 +18,6 @@ spring:
     show-sql: true
   messages:
     encoding: UTF-8
-  template:
-    cache: false
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
