@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.repository.ChartAlexaRepository;
 import org.paingan.boot.repository.ChartAlexaSpecificationBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
 	
 	/*
 	 * (non-Javadoc)
-	 * @see org.paingan.boot.service.ChartAlexaService#save(org.paingan.boot.model.ChartAlexa)
+	 * @see org.paingan.boot.service.ChartAlexaService#save(org.paingan.boot.domain.ChartAlexa)
 	 */
 	public ChartAlexa save(ChartAlexa chartAlexa) {
 		return chartAlexaRepository.save(chartAlexa);

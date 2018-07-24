@@ -1,6 +1,6 @@
 package org.paingan.boot.repository;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.domain.ChartAlexa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 

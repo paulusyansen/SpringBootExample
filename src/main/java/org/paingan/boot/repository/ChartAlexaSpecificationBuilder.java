@@ -3,7 +3,7 @@ package org.paingan.boot.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.util.SpecSearchCriteria;
 import org.paingan.constant.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;

@@ -2,7 +2,7 @@ package org.paingan.boot.service;
 
 import java.util.List;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.domain.ChartAlexa;
 
 public interface ChartAlexaService {
 	

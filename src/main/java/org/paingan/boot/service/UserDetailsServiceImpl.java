@@ -3,7 +3,7 @@ package org.paingan.boot.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.paingan.boot.model.ApplicationUser;
+import org.paingan.boot.domain.UserAccount;
 import org.paingan.boot.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     	System.out.println("loadUserByUsername: "+username);
-        ApplicationUser applicationUser = userRepository.findByUsername(username);
+        UserAccount applicationUser = userRepository.findByUsername(username);
         
         if (applicationUser == null) {
             throw new UsernameNotFoundException(username);

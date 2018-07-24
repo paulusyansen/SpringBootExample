@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
 import org.springframework.beans.factory.annotation.Autowired;

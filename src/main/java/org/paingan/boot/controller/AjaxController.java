@@ -1,8 +1,8 @@
 package org.paingan.boot.controller;
 
-import org.paingan.boot.model.Chart4G;
-import org.paingan.boot.model.ChartAlexa;
-import org.paingan.boot.model.Response;
+import org.paingan.boot.domain.Chart4G;
+import org.paingan.boot.domain.ChartAlexa;
+import org.paingan.boot.domain.Response;
 import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
 import org.springframework.beans.factory.annotation.Autowired;

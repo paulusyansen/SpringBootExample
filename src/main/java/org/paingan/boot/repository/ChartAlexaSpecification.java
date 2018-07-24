@@ -5,7 +5,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.paingan.boot.model.ChartAlexa;
+import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.util.SpecSearchCriteria;
 import org.paingan.constant.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;

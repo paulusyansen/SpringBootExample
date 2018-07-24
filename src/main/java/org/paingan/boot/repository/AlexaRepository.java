@@ -2,7 +2,7 @@ package org.paingan.boot.repository;
 
 import java.util.List;
 
-import org.paingan.boot.model.Alexa;
+import org.paingan.boot.domain.Alexa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

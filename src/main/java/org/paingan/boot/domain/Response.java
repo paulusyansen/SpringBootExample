@@ -1,4 +1,4 @@
-package org.paingan.boot.model;
+package org.paingan.boot.domain;
 
 import org.paingan.constant.ResponseEnum;
 

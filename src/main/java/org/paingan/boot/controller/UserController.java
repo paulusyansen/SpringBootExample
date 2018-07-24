@@ -1,6 +1,6 @@
 package org.paingan.boot.controller;
 
-import org.paingan.boot.model.ApplicationUser;
+import org.paingan.boot.domain.UserAccount;
 import org.paingan.boot.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +22,7 @@ public class UserController {
 	}
 
 	@PostMapping("/sign-up")
-	public void signUp(@RequestBody ApplicationUser applicationUser) {
+	public void signUp(@RequestBody UserAccount applicationUser) {
 		applicationUser.setPassword(bCryptPasswordEncoder.encode(applicationUser.getPassword()));
 		userRepository.save(applicationUser);
 	}

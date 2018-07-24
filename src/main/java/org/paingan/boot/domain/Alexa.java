@@ -1,4 +1,4 @@
-package org.paingan.boot.model;
+package org.paingan.boot.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
