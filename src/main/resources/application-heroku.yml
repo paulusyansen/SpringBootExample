@@ -1,0 +1,28 @@
+header:
+  title: Mobile Monitoring Tools
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 20
+    password: y5imuwxjnlsgfrrw
+    url: jdbc:mysql://yup5s49ny1t8zgee:y5imuwxjnlsgfrrw@jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lb64fl8b9h7sxbit?autoReconnect=true&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: yup5s49ny1t8zgee
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  messages:
+    encoding: UTF-8
+  template:
+    cache: false
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
