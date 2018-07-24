@@ -1,7 +1,8 @@
-package org.paingan.boot.security;
+package org.paingan.boot.config;
 
 import javax.annotation.PostConstruct;
 
+import org.paingan.boot.security.AuthoritiesConstants;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

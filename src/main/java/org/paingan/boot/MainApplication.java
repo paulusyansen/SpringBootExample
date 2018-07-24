@@ -29,19 +29,19 @@ public class MainApplication   extends SpringBootServletInitializer {
         return new BCryptPasswordEncoder();
     }
 	
-	@Bean
-	public LocaleResolver localeResolver() {
-	    SessionLocaleResolver slr = new SessionLocaleResolver();
-	    slr.setDefaultLocale(Locale.US);
-	    return slr;
-	}
-	
-	@Bean
-	public LocaleChangeInterceptor localeChangeInterceptor() {
-	    LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-	    lci.setParamName("lang");
-	    return lci;
-	}
+//	@Bean
+//	public LocaleResolver localeResolver() {
+//	    SessionLocaleResolver slr = new SessionLocaleResolver();
+//	    slr.setDefaultLocale(Locale.US);
+//	    return slr;
+//	}
+//	
+//	@Bean
+//	public LocaleChangeInterceptor localeChangeInterceptor() {
+//	    LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+//	    lci.setParamName("lang");
+//	    return lci;
+//	}
 	
 	public static void main(String[] args) {
 		System.setProperty("spring.devtools.restart.enabled", "true");  
