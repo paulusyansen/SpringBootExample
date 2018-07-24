@@ -1,19 +1,27 @@
 package org.paingan.boot.security;
 
-import org.paingan.constant.AuthorityName;
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurity extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+	
+	private final AuthenticationManagerBuilder authenticationManagerBuilder;
+	
     @Autowired
 	private UserDetailsService userDetailsService;
     
@@ -21,10 +29,33 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    public WebSecurity(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userDetailsService = userDetailsService;
+    public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    	this.authenticationManagerBuilder = authenticationManagerBuilder;
+    	this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
+    
+//    @PostConstruct
+//    public void init() {
+//        try {
+//            authenticationManagerBuilder
+//                .userDetailsService(userDetailsService)
+//                .passwordEncoder(passwordEncoder());
+//        } catch (Exception e) {
+//            throw new BeanInitializationException("Security configuration failed", e);
+//        }
+//    }
+//    
+//    @Override
+//    @Bean
+//    public AuthenticationManager authenticationManagerBean() throws Exception {
+//        return super.authenticationManagerBean();
+//    }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -53,8 +84,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     	
     	http.
 		authorizeRequests()
-			.antMatchers("/chart").hasAnyRole(AuthorityName.USER.getText(),AuthorityName.ADMIN.getText())
-			.antMatchers("/form").hasRole(AuthorityName.ADMIN.getText()).and().csrf().disable().formLogin()
+			.antMatchers("/chart").hasAnyRole(AuthoritiesConstants.USER.getText(),AuthoritiesConstants.ADMIN.getText())
+			.antMatchers("/form").hasRole(AuthoritiesConstants.ADMIN.getText()).and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
 			.usernameParameter("username")

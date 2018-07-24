@@ -1,6 +1,6 @@
-package org.paingan.constant;
+package org.paingan.boot.security;
 
-public enum AuthorityName {
+public enum AuthoritiesConstants {
 	USER("ROLE_USER","USER"), 
 	ADMIN("ROLE_ADMIN","ADMIN");
 	
@@ -11,7 +11,7 @@ public enum AuthorityName {
      * 
      * @param text
      */
-	AuthorityName(final String key, final String text) {
+	AuthoritiesConstants(final String key, final String text) {
 		this.key = key;
         this.text = text;
     }
