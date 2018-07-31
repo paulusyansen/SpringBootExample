@@ -21,7 +21,8 @@
 			<h1 class="display-4" th:if="${#authorization.expression('isAuthenticated()')}">Hi <span sec:authentication="name"></span> !!</h1>
 			<h1 class="display-4" th:if="${#authorization.expression('isAnonymous()')}">Hi There!</h1>
 			<p class="lead">This is a simple tools, a simple
-				monitoring tools for calling extra attention to monitor speed competitor.</p>
+				monitoring tools for calling extra attention to monitor speed application.</p>
+			<p>User Account: user/password<br />Admin Account: admin/password</p>
 			<hr class="my-4">
 			
 			<p class="lead">
