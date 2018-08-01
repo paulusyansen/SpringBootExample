@@ -14,13 +14,10 @@ spring:
     username: yup5s49ny1t8zgee
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
   messages:
     encoding: UTF-8
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
   devtools:
     livereload:
       enabled: true

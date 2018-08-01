@@ -31,7 +31,7 @@ public class Chart4G implements Serializable{
 	@NotNull @Min(value = 1, message = "*Please provide a tokopedia score")
 	private int tokopedia;
 	
-	@NotNull @Min(value = 1, message = "*Please provide a shoppe score")
+	@NotNull @Min(value = 1, message = "*Please provide a shopee score")
 	private int shopee;
 	
 	@NotNull @Min(value = 1, message = "*Please provide a lazada score")

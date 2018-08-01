@@ -27,7 +27,7 @@
 							<label for="inputDate">Date</label> 
 							<input type="text" class="form-control" id="inputDate" placeholder="Date">
 						</div>
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-2">
 							<label for="inputDevice">Device</label> 
 							<select id="inputDevice" class="form-control">
 								<option value="" selected>Choose...</option>
@@ -35,7 +35,7 @@
 								<option value="ios">ios</option>
 							</select>
 						</div>
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-2">
 							<label for="inputPage">Page</label> 
 							<select id="inputPage" class="form-control">
 								<option value="" selected>Choose...</option>
@@ -45,6 +45,8 @@
 								<option value="search">search</option>
 							</select>
 						</div>
+					</div>
+					<div class="form-row">
 						<div class="form-group col-md-2">
 							<label for="inputElevenia">elevenia</label> 
 							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia">
@@ -131,7 +133,8 @@
 	        data["page"] = $("#inputPage").val();
 	        data["device"] = $("#inputDevice").val();
 	        data["elevenia"] = $("#inputElevenia").val();
-	        data["tokopedia"] = $("#inputShopee").val();
+	        data["tokopedia"] = $("#inputTokopedia").val();
+	        data["shopee"] = $("#inputShopee").val();
 	        data["lazada"] = $("#inputLazada").val();
 	        data["blibli"] = $("#inputBlibli").val();   
 
@@ -148,13 +151,40 @@
 	        timeout: 600000,
 	        success: function (data) {
 	            console.log("SUCCESS : ", data);
-	            
 	            $("#form-add").prop("disabled", false);
-	            $(".table > tbody").html("");
+	            
+	            var result = data.data;
+	            $('.table > tbody:last-child').append('<tr><td>'+result.id+'</td><td>'
+	            		+result.date+'</td><td>'+result.page+'</td><td>'+result.device+'</td><td>'
+	            		+result.elevenia+'</td><td>'+result.tokopedia+'</td><td>'+result.shopee+'</td><td>'+result.lazada+'</td><td>'+result.blibli+'</td></tr>');
 	        },
 	        error: function (e) {
 	            console.log("ERROR : ", e);
+	            $("#form-add").prop("disabled", false);
+	            $(".alert").removeClass("collapse");
+	            $(".alert").html(e.responseJSON.message);
+	        }
+	    });
+
+	}
+	
+function getData() {
+	    $(".alert").removeClass("collapse").addClass("collapse");
+	    
+	    $.ajax({
+	        type: "GET",
+	        contentType: "application/json",
+	        url: "/ajax/chart/4G/list",
+	        success: function (data) {
+	            console.log("SUCCESS : ", data);
+	            $(".table tbody").html("");
 	            
+				for(var i=0; i < data.data.length; i++) {
+					
+				}
+	        },
+	        error: function (e) {
+	            console.log("ERROR : ", e);
 	            $("#form-add").prop("disabled", false);
 	            $(".alert").removeClass("collapse");
 	            $(".alert").html(e.responseJSON.message);
