@@ -19,27 +19,26 @@
 		<div class="row">
 			<div class="col-md-12 order-md-1">
 			<h4 class="mb-3"><strong>4G - Average Load Time</strong></h4>
-				<form class="needs-validation" novalidate>
+				<form class="needs-validation" novalidate id="form4G">
+					<div class="alert alert-danger collapse" role="alert">
+					</div>
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<label for="inputDate">Date</label> 
 							<input type="text" class="form-control" id="inputDate" placeholder="Date">
 						</div>
-						<div class="form-group col-md-2">
-							<label for="inputSite">Site</label> 
-							<select id="inputSite" class="form-control">
-								<option selected>Choose...</option>
-								<option value="elevenia">elevenia</option>
-								<option value="tokopedia">tokopedia</option>
-								<option value="shopee">shopee</option>
-								<option value="lazada">lazada</option>
-								<option value="blibli">blibli</option>
+						<div class="form-group col-md-4">
+							<label for="inputDevice">Device</label> 
+							<select id="inputDevice" class="form-control">
+								<option value="" selected>Choose...</option>
+								<option value="android">android</option>
+								<option value="ios">ios</option>
 							</select>
 						</div>
-						<div class="form-group col-md-2">
+						<div class="form-group col-md-4">
 							<label for="inputPage">Page</label> 
 							<select id="inputPage" class="form-control">
-								<option selected>Choose...</option>
+								<option value="" selected>Choose...</option>
 								<option value="main">main</option>
 								<option value="category">category</option>
 								<option value="pdp">pdp</option>
@@ -47,19 +46,27 @@
 							</select>
 						</div>
 						<div class="form-group col-md-2">
-							<label for="inputDevice">Device</label> 
-							<select id="inputDevice" class="form-control">
-								<option selected>Choose...</option>
-								<option value="ios">ios</option>
-								<option value="android">android</option>
-							</select>
+							<label for="inputElevenia">elevenia</label> 
+							<input type="text" class="form-control" id="inputElevenia" placeholder="elevenia">
 						</div>
 						<div class="form-group col-md-2">
-							<label for="inputScore">Score</label> 
-							<input type="text" class="form-control" id="inputScore" placeholder="Score">
+							<label for="inputTokopedia">tokopedia</label> 
+							<input type="text" class="form-control" id="inputTokopedia" placeholder="tokopedia">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputShopee">shopee</label> 
+							<input type="text" class="form-control" id="inputShopee" placeholder="shopee">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputLazada">lazada</label> 
+							<input type="text" class="form-control" id="inputLazada" placeholder="lazada">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputBlibli">blibli</label> 
+							<input type="text" class="form-control" id="inputBlibli" placeholder="blibli">
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary" id="form-add">Add</button>
+					<button type="submit" class="btn btn-primary" id="form-add">Add</button>
 				</form>
 				</div>
 			</div>
@@ -105,25 +112,56 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function () {
+		
+	    $("#form4G").submit(function (e) {
 
-	    $("#form-add").click(function (e) {
+	        //stop submit the form, we will post it manually.
 	        e.preventDefault();
-	        var data = {};
-	        data["inputDate"] = $("#inputDate").val();
-	        data["inputScore"] = $("#inputScore").val();
-	        data["inputSite"] = $("#inputSite").val();
-	        data["inputPage"] = $("#inputPage").val();
-	        data["inputDevice"] = $("#inputDevice").val();
-	        
-	        //alert(data["inputSite"]);
-	        swal(
-	        	'The Internet?',
-	        	'That thing is still around?',
-	        	'question'
-	       	);
+
+	        fire_ajax_submit();
+
 	    });
 
 	});
+	
+	function fire_ajax_submit() {
+		
+		var data = {};
+	        data["date"] = $("#inputDate").val();
+	        data["page"] = $("#inputPage").val();
+	        data["device"] = $("#inputDevice").val();
+	        data["elevenia"] = $("#inputElevenia").val();
+	        data["tokopedia"] = $("#inputShopee").val();
+	        data["lazada"] = $("#inputLazada").val();
+	        data["blibli"] = $("#inputBlibli").val();   
+
+	    $("#form-add").prop("disabled", true);
+	    $(".alert").removeClass("collapse").addClass("collapse");
+	    
+	    $.ajax({
+	        type: "POST",
+	        contentType: "application/json",
+	        url: "/ajax/chart/4G/save",
+	        data: JSON.stringify(data),
+	        dataType: 'json',
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+	            console.log("SUCCESS : ", data);
+	            
+	            $("#form-add").prop("disabled", false);
+	            $(".table > tbody").html("");
+	        },
+	        error: function (e) {
+	            console.log("ERROR : ", e);
+	            
+	            $("#form-add").prop("disabled", false);
+	            $(".alert").removeClass("collapse");
+	            $(".alert").html(e.responseJSON.message);
+	        }
+	    });
+
+	}
 	</script>
 	
 </body>

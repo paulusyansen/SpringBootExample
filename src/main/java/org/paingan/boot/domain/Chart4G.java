@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -15,36 +16,38 @@ import javax.validation.constraints.NotNull;
 @Table(name = "chart_4G")
 public class Chart4G implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@NotBlank
+	@NotBlank(message = "*Please provide a date")
 	private String date;
 
-	@NotNull
+	@NotNull @Min(value = 1, message = "*Please provide a elevenia score")
 	private int elevenia;
 	
-	@NotNull
+	@NotNull @Min(value = 1, message = "*Please provide a tokopedia score")
 	private int tokopedia;
 	
-	@NotNull
+	@NotNull @Min(value = 1, message = "*Please provide a shoppe score")
 	private int shopee;
 	
-	@NotNull
+	@NotNull @Min(value = 1, message = "*Please provide a lazada score")
 	private int lazada;
 	
-	@NotNull
+	@NotNull @Min(value = 1, message = "*Please provide a blibli score")
 	private int blibli;
 
-	@NotBlank
+	@NotBlank(message = "*Please provide a page")
 	private String page;
 
-	@NotBlank
+	@NotBlank(message = "*Please provide a device")
 	private String device;
 
 	@Column(name = "show_yn")
-	private int showYn;
+	private int showYn = 1;
 
 	public int getId() {
 		return id;

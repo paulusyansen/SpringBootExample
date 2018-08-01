@@ -10,7 +10,7 @@ spring:
       connection-timeout: 60000
       maximum-pool-size: 20
     password: y5imuwxjnlsgfrrw
-    url: jdbc:mysql://yup5s49ny1t8zgee:y5imuwxjnlsgfrrw@jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lb64fl8b9h7sxbit?autoReconnect=true&serverTimezone=UTC&useLegacyDatetimeCode=false
+    url: jdbc:mysql://yup5s49ny1t8zgee:y5imuwxjnlsgfrrw@jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lb64fl8b9h7sxbit?autoReconnect=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
     username: yup5s49ny1t8zgee
   jpa:
     hibernate:
@@ -21,3 +21,8 @@ spring:
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
