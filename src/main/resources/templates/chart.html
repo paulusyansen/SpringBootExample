@@ -90,7 +90,8 @@
 					 });
 					
 					 data.addRows(dataArray);
-					 chart.draw(data, google.charts.Bar.convertOptions(options));
+					 
+					 if(dataArray.length > 0) chart.draw(data, google.charts.Bar.convertOptions(options));
 				} else {
 					console.log("Fail: ", result);
 				}
@@ -139,7 +140,7 @@
 					 });
 					
 					 data.addRows(dataArray);
-					 chart.draw(data, google.charts.Line.convertOptions(options));
+					 if(dataArray.length > 0) chart.draw(data, google.charts.Line.convertOptions(options));
 				} else {
 					console.log("Fail: ", result);
 				}

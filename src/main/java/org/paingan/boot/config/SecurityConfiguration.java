@@ -85,8 +85,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	
     	http.
 		authorizeRequests()
-			.antMatchers("/chart").hasAnyRole(AuthoritiesConstants.USER.getText(),AuthoritiesConstants.ADMIN.getText())
-			.antMatchers("/form").hasRole(AuthoritiesConstants.ADMIN.getText()).and().csrf().disable().formLogin()
+			.antMatchers("/chart","/form").hasAnyRole(AuthoritiesConstants.USER.getText(),AuthoritiesConstants.ADMIN.getText())
+			//.antMatchers("/form").hasRole(AuthoritiesConstants.ADMIN.getText())
+			.and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
 			.usernameParameter("username")

@@ -16,7 +16,8 @@
 			        <a class="nav-link" th:classappend="${currentPage == 'chart'} ? 'active'" th:href="@{/chart}" th:text="#{menu.chart}">Chart</a>
 			   	</li>
 			   	<li class="nav-item dropdown" th:classappend="${currentPage == 'form4G' || currentPage == 'formAlexa'} ? 'active'" 
-			      	th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
+			      	th:if="${ #authorization.expression('isAuthenticated()') }">
+<!-- 						th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}"> -->
 		        	<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.form}">Data</a>
 		            <div class="dropdown-menu" aria-labelledby="dropdown01">
 		            	<a class="dropdown-item" th:classappend="${currentPage == 'form4G'} ? 'active'" th:href="@{/form4G}" th:text="#{menu.form.4g}">Data 4G</a>
