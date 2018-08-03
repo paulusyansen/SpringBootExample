@@ -23,3 +23,13 @@ spring:
       enabled: true
     restart:
       enabled: true
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.paingan.boot: ERROR
+    org.hibernate: ERROR
+    
+  

@@ -12,6 +12,8 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class ChartAlexaSpecification implements Specification<ChartAlexa>{
 	
+	private static final long serialVersionUID = 1L;
+	
 	private SpecSearchCriteria criteria;
 
 	public ChartAlexaSpecification(final SpecSearchCriteria criteria) {

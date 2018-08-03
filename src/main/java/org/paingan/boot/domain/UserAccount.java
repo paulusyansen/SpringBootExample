@@ -31,11 +31,11 @@ public class UserAccount implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Email(message = "*Please provide a valid Email")
+	//@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
 	private String username;
 	
-	@JsonIgnore
+	//@JsonIgnore
     @NotNull
 	@Length(min = 5, message = "*Your password must have at least 5 characters")
 	@NotEmpty(message = "*Please provide your password")

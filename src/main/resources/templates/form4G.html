@@ -16,9 +16,10 @@
 	<div th:replace="menu :: main"></div>
 		
 	<main role="main" class="container">
-	<h4 class="mb-3"><strong>4G - Average Load Time</strong></h4>
-		<div class="row" th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
-			<div class="col-md-12 order-md-1">
+	
+		<div class="row">
+			<h4 class="mb-3"><strong>4G - Average Load Time</strong></h4>
+			<div class="col-md-12 order-md-1" th:if="${ #authorization.expression('isAuthenticated()') and #strings.contains(#authentication.principal.authorities,'ADMIN')}">
 <!-- 			<h4 class="mb-3"><strong>4G - Average Load Time</strong></h4> -->
 				<form class="needs-validation" novalidate id="form4G">
 					<div class="alert alert-danger collapse" role="alert">
@@ -71,8 +72,8 @@
 					</div>
 					<button type="submit" class="btn btn-primary" id="form-add">Add</button>
 				</form>
-				</div>
 			</div>
+		</div>
 			
 			<hr class="mb-4">
 			

@@ -10,6 +10,8 @@ import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.domain.Response;
 import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value= {"/ajax","/api"})
 public class AjaxController {
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private ChartAlexaService chartAlexaService;

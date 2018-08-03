@@ -31,3 +31,4 @@ spring:
     cache: false
     prefix: classpath:/templates/
 trace: false
+    

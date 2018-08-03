@@ -8,7 +8,10 @@ import javax.validation.Valid;
 import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -22,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController extends BaseController{
+	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private ChartAlexaService chartAlexaService;
@@ -47,6 +51,7 @@ public class MainController extends BaseController{
     }
 	
 	@RequestMapping(value="/form")
+	@Secured("ROLE_ADMIN")
 	public ModelAndView form(){
 		
 		ModelAndView mav = new ModelAndView();
