@@ -32,7 +32,7 @@ public class UserAccount implements Serializable{
 	private int id;
 	
 	//@Email(message = "*Please provide a valid Email")
-	@NotEmpty(message = "*Please provide an email")
+	@NotEmpty(message = "*Please provide an username")
 	private String username;
 	
 	//@JsonIgnore
