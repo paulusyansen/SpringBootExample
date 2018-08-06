@@ -76,17 +76,10 @@ public class LoginController extends BaseController{
 		} else {
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 			
-//			Role role = new Role();
-//			role.setRole(AuthoritiesConstants.USER.getKey());
-//			role.setId(user.getId());
-//			
-//			Set<Role> roles = new HashSet<Role>();
-//			roles.add(role);
-//			
-//			Role role = roleRepository.findByRole(AuthoritiesConstants.USER.getKey());
-//			Set<Role> roles = new HashSet<Role>();
-//			roles.add(role);
-
+			Set<Role> roles = new HashSet<Role>();
+			user.setRoles(roles);
+			user.getRoles().add( roleRepository.findByRole(AuthoritiesConstants.USER.getKey()) );
+			
 			userRepository.save(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new UserAccount());
