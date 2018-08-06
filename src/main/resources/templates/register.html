@@ -4,7 +4,7 @@
 	<title th:text="${title}"></title>
 	
 	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,14 +20,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<form autocomplete="off" action="#" th:action="@{/registration}"
+				<form autocomplete="off" th:action="@{/registration}"
 					th:object="${user}" method="post" class="form-horizontal" role="form">
+					<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+						<p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+					</div>
 					<h1 class="display-4" th:text="Registration"></h1>
 					<div class="form-group">
 						<div class="col-sm-9">
-						<label th:if="${#fields.hasErrors('username')}" th:errors="username"
+						<label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
 								class="validation-message"></label>
-						<input type="text" th:field="*{username}" placeholder="username"
+						<input type="text" th:field="*{username}" placeholder="Username"
 								class="form-control" /> 
 						</div>
 					</div>

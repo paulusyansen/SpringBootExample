@@ -41,7 +41,7 @@ public class UserAccount implements Serializable{
 	@NotEmpty(message = "*Please provide your password")
 	private String password;
 	
-	private int active;
+	private int active = 1;
 	
 	private String firstname;
 	

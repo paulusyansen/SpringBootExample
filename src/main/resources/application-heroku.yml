@@ -27,8 +27,8 @@ spring:
 logging:
   level:
     root: ERROR
-    org.springframework.security: DEBUG
-    org.springframework.web: DEBUG
+    org.springframework.security: ERROR
+    org.springframework.web: ERROR
     org.paingan.boot: ERROR
     org.hibernate: ERROR
     
