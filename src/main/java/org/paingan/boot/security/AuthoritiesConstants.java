@@ -1,6 +1,7 @@
 package org.paingan.boot.security;
 
 public enum AuthoritiesConstants {
+	ANONYMOUS("ROLE_ANONYMOUS","ANONYMOUS"),
 	USER("ROLE_USER","USER"), 
 	ADMIN("ROLE_ADMIN","ADMIN");
 	

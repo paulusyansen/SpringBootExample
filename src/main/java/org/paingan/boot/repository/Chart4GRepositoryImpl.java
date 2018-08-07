@@ -1,6 +1,7 @@
 package org.paingan.boot.repository;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -26,6 +27,7 @@ public class Chart4GRepositoryImpl{
 			ChartDTO chartDTO = new ChartDTO(result[0].toString(),Float.parseFloat(result[1].toString()),Float.parseFloat(result[2].toString()),Float.parseFloat(result[3].toString()),Float.parseFloat(result[4].toString()),Float.parseFloat(result[5].toString()));
 			list.add(chartDTO);
 		}
+		
 
 		return list;
 	}

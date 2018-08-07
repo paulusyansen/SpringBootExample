@@ -4,6 +4,8 @@ server:
       enabled: false
 
 spring:
+  main:
+    banner-mode: 'OFF'
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -14,7 +16,7 @@ spring:
     username: yup5s49ny1t8zgee
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
   messages:
     encoding: UTF-8
@@ -28,7 +30,7 @@ logging:
   level:
     root: ERROR
     org.springframework.security: ERROR
-    org.springframework.web: ERROR
+    org.springframework.web: INFO
     org.paingan.boot: ERROR
     org.hibernate: ERROR
     
