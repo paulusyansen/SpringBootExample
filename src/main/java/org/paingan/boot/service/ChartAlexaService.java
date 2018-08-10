@@ -19,4 +19,11 @@ public interface ChartAlexaService {
 	 * @return
 	 */
 	public ChartAlexa save(ChartAlexa chartAlexa);
+	
+	/**
+	 * 
+	 * @param search
+	 * @return
+	 */
+	public List<ChartAlexa> findAll();
 }

@@ -53,6 +53,23 @@ public class AjaxController {
 		return response ;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "/chart/alexa/list")
+	public ResponseEntity<?> findAllAlexa() {
+        Response response = new Response();
+        
+        List<ChartAlexa> chartAlexaList = chartAlexaService.findAll();
+        
+        if(chartAlexaList.isEmpty()) {
+        	response.setMessage("no result found!");
+        } else {
+        	response.setMessage("success");
+        }
+        
+        response.setData(chartAlexaList);
+		
+		return ResponseEntity.ok(response) ;
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "/chart/alexa/save")
 	public @ResponseBody Response saveAlexa(@ModelAttribute ChartAlexa chartAlexa) {
         Response response = new Response();
@@ -63,7 +80,7 @@ public class AjaxController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/chart/4G/list")
-	public ResponseEntity<?> getSearch4G() {
+	public ResponseEntity<?> findAll4G() {
         Response response = new Response();
         
         List<Chart4G> chart4GList = chart4GService.findAll();

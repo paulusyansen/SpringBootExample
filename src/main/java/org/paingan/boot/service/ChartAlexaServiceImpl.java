@@ -47,6 +47,17 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
         return chartAlexaRepository.findAll(spec);
 	}
 	
+	
+	/*
+	 * (non-Javadoc)
+	 * @see org.paingan.boot.service.ChartAlexaService#findAll()
+	 */
+	public List<ChartAlexa> findAll() {
+        return chartAlexaRepository.findAll();
+	}
+	
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * @see org.paingan.boot.service.ChartAlexaService#save(org.paingan.boot.domain.ChartAlexa)
