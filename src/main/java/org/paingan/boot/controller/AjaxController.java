@@ -45,10 +45,10 @@ public class AjaxController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/chart/4G/search")
-	public @ResponseBody Response search4G() {
+	public @ResponseBody Response search4G(@RequestParam(value = "q") String search) {
         Response response = new Response();
 		response.setStatusOK();
-		response.setData(chart4GService.findAllChart4G());
+		response.setData(chart4GService.search(search));
 		
 		return response ;
 	}

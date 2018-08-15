@@ -25,4 +25,11 @@ public interface Chart4GService {
 	 * @return
 	 */
 	public Chart4G save(Chart4G chart4G);
+	
+	/**
+	 * 
+	 * @param search
+	 * @return
+	 */
+	public List<Chart4G> search(String search);
 }
