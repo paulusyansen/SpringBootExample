@@ -16,7 +16,7 @@ spring:
     username: yup5s49ny1t8zgee
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
   messages:
     encoding: UTF-8
@@ -25,6 +25,13 @@ spring:
       enabled: true
     restart:
       enabled: true
+  h2:
+    console:
+      enabled: true
+  liquibase:
+    change-log: classpath:liquibase-outputChangeLog.xml
+    enabled: false
+    #change-log: classpath:/db/changelog/db.changelog-master.yaml
 
 logging:
   level:
