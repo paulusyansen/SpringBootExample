@@ -1,5 +1,10 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
 spring:
   profiles:
-    active: heroku, thym
+    active: dev, heroku, thym
+    
 header:
   title: Monitoring Tools

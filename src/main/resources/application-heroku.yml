@@ -1,11 +1,4 @@
-server:
-  error:
-    whitelabel:
-      enabled: false
-
 spring:
-  main:
-    banner-mode: 'OFF'
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -14,31 +7,7 @@ spring:
     password: y5imuwxjnlsgfrrw
     url: jdbc:mysql://yup5s49ny1t8zgee:y5imuwxjnlsgfrrw@jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lb64fl8b9h7sxbit?autoReconnect=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
     username: yup5s49ny1t8zgee
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
-  messages:
-    encoding: UTF-8
-  devtools:
-    livereload:
-      enabled: true
-    restart:
-      enabled: true
-  h2:
-    console:
-      enabled: true
   liquibase:
-    change-log: classpath:liquibase-outputChangeLog.xml
-    enabled: false
-    #change-log: classpath:/db/changelog/db.changelog-master.yaml
-
-logging:
-  level:
-    root: ERROR
-    org.springframework.security: ERROR
-    org.springframework.web: INFO
-    org.paingan.boot: ERROR
-    org.hibernate: ERROR
-    
-  
+    #change-log: classpath:liquibase-outputChangeLog.xml
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml  
