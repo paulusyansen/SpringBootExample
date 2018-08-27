@@ -92,6 +92,7 @@ public class ChartAlexa implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Chart Alexa [id = " + id + ", date = " + date + ", elevenia = " + elevenia + ", tokopedia = " + tokopedia + ", shopee = " + shopee + ", blibli = " + blibli + ", showYn = " + showYn + "]";
+		return "ChartAlexa [id=" + id + ", date=" + date + ", elevenia=" + elevenia + ", tokopedia=" + tokopedia
+				+ ", shopee=" + shopee + ", lazada=" + lazada + ", blibli=" + blibli + ", showYn=" + showYn + "]";
 	}
 }

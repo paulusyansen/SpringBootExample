@@ -128,4 +128,11 @@ public class Chart4G implements Serializable{
 	public void setShowYn(int showYn) {
 		this.showYn = showYn;
 	}
+
+	@Override
+	public String toString() {
+		return "Chart4G [id=" + id + ", date=" + date + ", elevenia=" + elevenia + ", tokopedia=" + tokopedia
+				+ ", shopee=" + shopee + ", lazada=" + lazada + ", blibli=" + blibli + ", page=" + page + ", device="
+				+ device + ", showYn=" + showYn + "]";
+	}
 }

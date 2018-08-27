@@ -1,15 +1,17 @@
 package org.paingan.boot.repository;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.paingan.boot.dto.ChartDTO;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Transactional
 public class Chart4GRepositoryImpl{
 	
 	@PersistenceContext

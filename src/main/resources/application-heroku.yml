@@ -11,3 +11,21 @@ spring:
     #change-log: classpath:liquibase-outputChangeLog.xml
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.xml  
+    
+    
+info:
+  app:
+    name: Paingan Boot
+    description: This is my first spring boot application
+    version: 3.0.0
+    
+management:
+  endpoint:
+    web: 
+    exposure:
+      include: "*"
+    shutdown:
+      enabled: true
+    enabled-by-default: false
+    info:
+      enabled: true

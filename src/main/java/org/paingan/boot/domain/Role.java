@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "role")
 public class Role {
+
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
@@ -30,6 +31,8 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", role=" + role + "]";
+	}
 }
