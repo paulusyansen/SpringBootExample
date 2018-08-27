@@ -146,7 +146,7 @@
 	    $.ajax({
 	        type: "POST",
 	        contentType: "application/json",
-	        url: "/ajax/chart/4G/save",
+	        url: "/api/chart/4G/save",
 	        data: JSON.stringify(data),
 	        dataType: 'json',
 	        cache: false,
@@ -176,7 +176,7 @@ function getData() {
 	    $.ajax({
 	        type: "GET",
 	        contentType: "application/json",
-	        url: "/ajax/chart/4G/list",
+	        url: "/api/chart/4G/list",
 	        success: function (data) {
 	            console.log("SUCCESS : ", data);
 	            $(".table tbody").html("");

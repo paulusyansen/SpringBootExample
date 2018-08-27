@@ -81,7 +81,7 @@
 		
 		$.ajax({
 			type : "GET",
-			url : "/ajax/chart/4G/search",
+			url : "/api/chart/4G/search?q=showYn:1",
 			dataType : "json",
 			success: function(result){
 				if(result.status == "OK"){
@@ -131,7 +131,7 @@
 		
 		$.ajax({
 			type : "GET",
-			url : "/ajax/chart/alexa/search?q=showYn:1",
+			url : "/api/chart/alexa/search?q=showYn:1",
 			dataType : "json",
 			success: function(result){
 				if(result.status == "OK"){
