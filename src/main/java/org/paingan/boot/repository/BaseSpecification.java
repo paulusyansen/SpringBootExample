@@ -44,8 +44,12 @@ public class BaseSpecification<T> implements Specification<T>{
 				return criteriaBuilder.notEqual(root.get(criteria.getKey()), criteria.getValue());
 			case GREATER_THAN:
 				return criteriaBuilder.greaterThan(root.get(criteria.getKey()), criteria.getValue().toString());
+			case GREATER_THAN_EQUAL:
+				return criteriaBuilder.greaterThanOrEqualTo(root.get(criteria.getKey()), criteria.getValue().toString());
 			case LESS_THAN:
 				return criteriaBuilder.lessThan(root.get(criteria.getKey()), criteria.getValue().toString());
+			case LESS_THAN_EQUAL:
+				return criteriaBuilder.lessThanOrEqualTo(root.get(criteria.getKey()), criteria.getValue().toString());
 			case LIKE:
 				return criteriaBuilder.like(root.get(criteria.getKey()), criteria.getValue().toString());
 			case STARTS_WITH:

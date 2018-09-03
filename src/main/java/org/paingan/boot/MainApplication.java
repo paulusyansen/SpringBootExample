@@ -12,7 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableAutoConfiguration
 @ComponentScan("org.paingan")
 @SpringBootApplication
-public class MainApplication   extends SpringBootServletInitializer {
+public class MainApplication extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

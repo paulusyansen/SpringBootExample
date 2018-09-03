@@ -49,7 +49,7 @@ public class Chart4GServiceImpl implements Chart4GService {
 	public List<Chart4G> search(String search) {
 		BaseSpecificationBuilder<Chart4G> builder = new BaseSpecificationBuilder<Chart4G>();
 		
-		Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),", Pattern.UNICODE_CHARACTER_CLASS);
+		Pattern pattern = Pattern.compile("(\\w+?)(:|<|>|<:|>:)(\\w+?),", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(search + ",");
         
         while (matcher.find()) {

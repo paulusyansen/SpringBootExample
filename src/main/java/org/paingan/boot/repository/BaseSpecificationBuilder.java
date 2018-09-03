@@ -22,7 +22,8 @@ public class BaseSpecificationBuilder<T> {
     }
 
     public final BaseSpecificationBuilder<T> with(final String orPredicate, final String key, final String operation, final Object value, final String prefix, final String suffix) {
-        SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
+        //SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
+        SearchOperation op = SearchOperation.getSimpleOperation(operation);
         
         if (op != null) {
             if (op == SearchOperation.EQUALITY) { // the operation may be complex operation
@@ -64,7 +65,7 @@ public class BaseSpecificationBuilder<T> {
             result = params.get(i).isOrPredicate() ? 
             		Specifications.where(result).or(new BaseSpecification<T>(params.get(i)))
                     : Specifications.where(result)
-                        .and(new BaseSpecification(params.get(i)));
+                        .and(new BaseSpecification<T>(params.get(i)));
 
         }
 

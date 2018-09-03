@@ -20,6 +20,10 @@ logging:
   level:
     root: ERROR
     org.springframework.security: ERROR
-    org.springframework.web: INFO
-    org.paingan.boot: ERROR
-    org.hibernate: DEBUG
+    org.springframework.web: ERROR
+    org.paingan.boot: DEBUG
+    org.hibernate: ERROR
+    
+    
+application:
+  name: Paingan Boot v1.0.3

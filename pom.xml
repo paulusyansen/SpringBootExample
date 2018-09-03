@@ -6,7 +6,7 @@
 
 	<groupId>org.paingan.boot</groupId>
 	<artifactId>paingan-boot</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>paingan-boot</name>
@@ -25,7 +25,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 
-	<dependencies>
+	<dependencies>    
 		<!-- This is a web application -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -211,7 +211,7 @@
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-rest-hal-browser</artifactId>
 		</dependency>
-
+		
 	</dependencies>
 
 
