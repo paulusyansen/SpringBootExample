@@ -15,12 +15,15 @@ spring:
   h2:
     console:
       enabled: true
+  mvc:
+    favicon:
+      enabled: true
       
 logging:
   level:
     root: ERROR
     org.springframework.security: ERROR
-    org.springframework.web: ERROR
+    org.springframework.web: INFO
     org.paingan.boot: DEBUG
     org.hibernate: ERROR
     

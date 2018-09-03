@@ -5,6 +5,7 @@ import org.paingan.constant.ResponseEnum;
 public class Response {
 	private String status = "OK";
 	private String message = "";
+	private String uri = "";
 	private Object data;
 	
 	public Response() {
@@ -46,4 +47,12 @@ public class Response {
     public void setStatusFail(){
         this.setStatus(ResponseEnum.FAIL.getValue());
     }
+
+	public String getUri() {
+		return uri;
+	}
+
+	public void setUri(String uri) {
+		this.uri = uri;
+	}
 }

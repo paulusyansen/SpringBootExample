@@ -101,6 +101,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/chart","/form").hasAnyRole(AuthoritiesConstants.USER.getText(),AuthoritiesConstants.ADMIN.getText())
 			.antMatchers(HttpMethod.POST,"/registration").hasRole(AuthoritiesConstants.ADMIN.getText())
 			.antMatchers("/actuator/**").permitAll()
+			.antMatchers("/static/**").permitAll()
 			.and().csrf().disable().formLogin()
 			.loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
