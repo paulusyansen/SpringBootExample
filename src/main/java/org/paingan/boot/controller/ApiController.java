@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value= {"/ajax","/api"})
+@RequestMapping(value = "/api")
 public class ApiController {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
