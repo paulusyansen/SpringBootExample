@@ -1,4 +1,6 @@
 spring:
+ # main:
+  #  banner-mode: 'OFF'
   devtools:
     livereload:
       enabled: true
