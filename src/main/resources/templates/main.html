@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" th:with="currentPage='home'">
+
+<head>
+	<title th:text="${title}"></title>
+	
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+	<div th:replace="menu :: main"></div>
+
+	<main role="main" class="container">
+		<div class="jumbotron">
+			<h1 class="display-4" th:if="${#authorization.expression('isAuthenticated()')}">Hi <span sec:authentication="name"></span> !!</h1>
+			<h1 class="display-4" th:if="${#authorization.expression('isAnonymous()')}">Hi There!</h1>
+			<p class="lead">This is a simple tools, a simple
+				monitoring tools for calling extra attention to monitor speed application.</p>
+			<p>User Account: user/password<br />Admin Account: admin/password</p>
+			<hr class="my-4">
+			
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" th:href="@{/chart}" role="button" th:text="#{home.welcome}">Learn
+					more</a>
+			</p>
+		</div>
+	</main>
+	
+	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	
+</body>
+
+</html>

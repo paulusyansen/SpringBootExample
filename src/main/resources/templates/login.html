@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:with="currentPage='login'">
+
+<head>
+	<title th:text="${title}"></title>
+	
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+	<div th:replace="menu :: main"></div>
+
+	<form th:action="@{/registration}" method="GET">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
+	</form>
+	
+	<div class="alert alert-danger" role="alert" th:if="${param.accessdenied}">
+		<strong>Access Denied!!</strong>
+	</div>
+		
+	<div class="alert alert-danger" role="alert" th:if="${param.error}">
+		<strong>Email or Password invalid, please verify</strong>
+	</div>
+
+	<form th:action="@{/login}" method="POST" class="form-signin">
+		<h1 class="display-4" th:text="Login"></h1>
+		<br /> 
+		<input type="text" id="username" name="username"
+			th:placeholder="Username" class="form-control" /> 
+		<br /> 
+		<input
+			type="password" th:placeholder="Password" id="password"
+			name="password" class="form-control" /> <br />
+
+		<button class="btn btn-lg btn-primary btn-block" name="Submit"
+			value="Login" type="Submit" th:text="Login"></button>
+	</form>
+
+	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+h1{
+	color:#0000FF;
+}
+
+h2{
+	color:#FF0000;
+}
+
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+}
+
+
+.chart {
+  width: 100%; 
+  min-height: 480px;
+}
+
+.row {
+  margin:0 !important;
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" th:with="currentPage='form'">
+
+<head>
+	<title th:text="${title}"></title>
+
+	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.1.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="webjars/sweetalert2/dist/sweetalert2.min.css" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+	
+	<div th:replace="menu :: main"></div>
+		
+	<main role="main" class="container">
+		<div class="card position-relative">
+			<div class="card-header"><strong>4G - Average Load Time</strong></div>
+			<div class="card-body">
+				<form>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="inputDate">Date</label> 
+							<input type="text" class="form-control" id="inputDate" placeholder="Date">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputSite">Site</label> 
+							<select id="inputSite" class="form-control">
+								<option selected>Choose...</option>
+								<option value="elevenia">elevenia</option>
+								<option value="tokopedia">tokopedia</option>
+								<option value="shopee">shopee</option>
+								<option value="lazada">lazada</option>
+								<option value="blibli">blibli</option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputPage">Page</label> 
+							<select id="inputPage" class="form-control">
+								<option selected>Choose...</option>
+								<option value="main">main</option>
+								<option value="category">category</option>
+								<option value="pdp">pdp</option>
+								<option value="search">search</option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputDevice">Device</label> 
+							<select id="inputDevice" class="form-control">
+								<option selected>Choose...</option>
+								<option value="ios">ios</option>
+								<option value="android">android</option>
+							</select>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputScore">Score</label> 
+							<input type="text" class="form-control" id="inputScore" placeholder="Score">
+						</div>
+					</div>
+					<button type="button" class="btn btn-primary" id="form-add">Add</button>
+				</form>
+			</div>
+			
+			<div class="card-body">
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Date</th>
+							<th scope="col">Page</th>
+							<th scope="col">Device</th>
+							<th scope="col">elevenia</th>
+							<th scope="col">tokopedia</th>
+							<th scope="col">shopee</th>
+							<th scope="col">lazada</th>
+							<th scope="col">blibli</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="chart4G : ${chart4G}">
+							<td th:text="${chart4G.id}">id</td>
+					        <td th:text="${chart4G.date}">date</td>
+					        <td th:text="${chart4G.page}">page</td>
+					        <td th:text="${chart4G.device}">device</td>
+					        <td th:text="${chart4G.elevenia}">elevenia</td>
+					        <td th:text="${chart4G.tokopedia}">tokopedia</td>
+					        <td th:text="${chart4G.shopee}">shopee</td>
+					        <td th:text="${chart4G.lazada}">lazada</td>
+					        <td th:text="${chart4G.blibli}">blibli</td>
+					     </tr>
+					</tbody>
+				</table>
+				
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-end">
+				    <li class="page-item disabled">
+				      <a class="page-link" href="#" tabindex="-1">Previous</a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">Next</a>
+				    </li>
+				  </ul>
+				</nav>
+				
+				
+			</div>
+			
+			
+			
+		</div>
+		<br />
+
+		<div class="card position-relative">
+			<div class="card-header"><strong>Alexa - Average Load Time</strong></div>
+			<div class="card-body">
+				<form action="#" th:action="@{/form}" th:object="${chartAlexa}" method="post">
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<label for="inputDate">Date</label> 
+							<input type="text" class="form-control" id="inputDate" th:placeholder="Date" th:field="*{date}">
+							<label th:if="${#fields.hasErrors('date')}" th:errors="date"
+								class="validation-message"></label>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputElevenia">elevenia</label> 
+							<input type="text" class="form-control" id="inputElevenia" th:placeholder="elevenia" th:field="*{elevenia}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputTokopedia">tokopedia</label> 
+							<input type="text" class="form-control" id="inputTokopedia" placeholder="tokopedia" th:field="*{tokopedia}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputShopee">shopee</label> 
+							<input type="text" class="form-control" id="inputShopee" placeholder="shopee" th:field="*{shopee}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputLazada">lazada</label> 
+							<input type="text" class="form-control" id="inputLazada" placeholder="lazada" th:field="*{lazada}">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="inputBlibli">blibli</label> 
+							<input type="text" class="form-control" id="inputBlibli" placeholder="blibli" th:field="*{blibli}">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary" id="form-add-alexa">Add</button>
+				</form>
+			</div>
+			<div class="card-body">
+				<table class="table table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Date</th>
+							<th scope="col">elevenia</th>
+							<th scope="col">tokopedia</th>
+							<th scope="col">shopee</th>
+							<th scope="col">lazada</th>
+							<th scope="col">blibli</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr th:each="alexa : ${alexa}">
+						<td th:text="${alexa.id}">id</td>
+				        <td th:text="${alexa.date}">date</td>
+				        <td th:text="${alexa.elevenia}">elevenia</td>
+				        <td th:text="${alexa.tokopedia}">tokopedia</td>
+				        <td th:text="${alexa.shopee}">shopee</td>
+				        <td th:text="${alexa.lazada}">lazada</td>
+				        <td th:text="${alexa.blibli}">blibli</td>
+				     </tr>
+					</tbody>
+				</table>
+				
+				<nav aria-label="Page navigation example">
+				  <ul class="pagination justify-content-end">
+				    <li class="page-item disabled">
+				      <a class="page-link" href="#" tabindex="-1">Previous</a>
+				    </li>
+				    <li class="page-item"><a class="page-link" href="#">1</a></li>
+				    <li class="page-item"><a class="page-link" href="#">2</a></li>
+				    <li class="page-item"><a class="page-link" href="#">3</a></li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">Next</a>
+				    </li>
+				  </ul>
+				</nav>
+				
+				
+			</div>
+		</div>
+		<br />
+	</main>
+	
+	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="webjars/sweetalert2/dist/sweetalert2.min.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function () {
+
+	    $("#form-add").click(function (e) {
+	        e.preventDefault();
+	        var data = {};
+	        data["inputDate"] = $("#inputDate").val();
+	        data["inputScore"] = $("#inputScore").val();
+	        data["inputSite"] = $("#inputSite").val();
+	        data["inputPage"] = $("#inputPage").val();
+	        data["inputDevice"] = $("#inputDevice").val();
+	        
+	        //alert(data["inputSite"]);
+	        swal(
+	        	'The Internet?',
+	        	'That thing is still around?',
+	        	'question'
+	       	);
+	    });
+
+	});
+	</script>
+	
+</body>
+
+</html>

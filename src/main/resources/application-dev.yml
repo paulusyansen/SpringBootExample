@@ -1,0 +1,27 @@
+spring:
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  messages:
+    encoding: UTF-8
+  h2:
+    console:
+      enabled: true
+      
+logging:
+  level:
+    root: ERROR
+    org.springframework.security: ERROR
+    org.springframework.web: ERROR
+    org.paingan.boot: DEBUG
+    org.hibernate: ERROR
+    
+    
+application:
+  name: Paingan Boot v1.0.3

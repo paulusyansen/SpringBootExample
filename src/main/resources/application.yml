@@ -1,0 +1,10 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  profiles:
+    active: dev, heroku, thym
+    
+header:
+  title: Monitoring Tools
