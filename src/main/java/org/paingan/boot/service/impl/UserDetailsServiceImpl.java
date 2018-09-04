@@ -1,4 +1,4 @@
-package org.paingan.boot.service;
+package org.paingan.boot.service.impl;
 
 import java.util.List;
 import java.util.stream.Collectors;

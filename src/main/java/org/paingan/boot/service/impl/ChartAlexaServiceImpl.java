@@ -1,12 +1,13 @@
-package org.paingan.boot.service;
+package org.paingan.boot.service.impl;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.paingan.boot.domain.ChartAlexa;
-import org.paingan.boot.repository.BaseSpecificationBuilder;
 import org.paingan.boot.repository.ChartAlexaRepository;
+import org.paingan.boot.repository.spec.BaseSpecificationBuilder;
+import org.paingan.boot.service.ChartAlexaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,16 @@ public class ChartAlexaServiceImpl implements ChartAlexaService {
 	 */
 	public ChartAlexa save(ChartAlexa chartAlexa) {
 		return chartAlexaRepository.save(chartAlexa);
+	}
+
+	
+	/*
+	 * (non-Javadoc)
+	 * @see org.paingan.boot.service.ChartAlexaService#findAlexaByid(Long)
+	 */
+	@Override
+	public ChartAlexa findAlexaByid(Long id) {
+		return chartAlexaRepository.getOne(id);
 	}
 		
 }

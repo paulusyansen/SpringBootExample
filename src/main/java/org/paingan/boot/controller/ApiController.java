@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.paingan.boot.domain.Chart4G;
 import org.paingan.boot.domain.ChartAlexa;
 import org.paingan.boot.domain.Response;
+import org.paingan.boot.exception.NotFoundException;
 import org.paingan.boot.service.Chart4GService;
 import org.paingan.boot.service.ChartAlexaService;
 import org.slf4j.Logger;
@@ -52,8 +53,21 @@ public class ApiController {
 		
 		return ResponseEntity.ok(response) ;
 	}
+	
+	@GetMapping(value = "/chart/alexa/{id}")
+	public ResponseEntity<?> findAlexaById(@PathVariable(value = "id") Long id) {
+        Response response = new Response();
+        
+        ChartAlexa chartAlexa = chartAlexaService.findAlexaByid(id);
 
-	@GetMapping(value = "/chart/alexa/{search}")
+        if(chartAlexa == null) throw new NotFoundException("id:"+id);
+        
+        response.setData(chartAlexa);
+		
+		return ResponseEntity.ok(response) ;
+	}
+
+	@GetMapping(value = "/chart/alexa/search/{search}")
 	public ResponseEntity<?> searchAlexa(@PathVariable(value = "search") String search) {
         Response response = new Response();
 		response.setStatusOK();
@@ -103,7 +117,7 @@ public class ApiController {
 	}
 
 	
-	@GetMapping(value = "/chart/4G/{search}")
+	@GetMapping(value = "/chart/4G/search/{search}")
 	public ResponseEntity<?> search4G(@PathVariable(value = "search") String search) {
 		Response response = new Response();
 		response.setStatusOK();

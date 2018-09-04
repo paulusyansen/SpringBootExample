@@ -1,4 +1,4 @@
-package org.paingan.boot.repository;
+package org.paingan.boot.repository.spec;
 
 import java.util.ArrayList;
 import java.util.List;

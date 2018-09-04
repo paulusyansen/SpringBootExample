@@ -1,4 +1,4 @@
-package org.paingan.boot.service;
+package org.paingan.boot.service.impl;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -6,8 +6,9 @@ import java.util.regex.Pattern;
 
 import org.paingan.boot.domain.Chart4G;
 import org.paingan.boot.dto.ChartDTO;
-import org.paingan.boot.repository.BaseSpecificationBuilder;
 import org.paingan.boot.repository.Chart4GRepository;
+import org.paingan.boot.repository.spec.BaseSpecificationBuilder;
+import org.paingan.boot.service.Chart4GService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;

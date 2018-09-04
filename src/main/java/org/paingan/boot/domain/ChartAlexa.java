@@ -19,7 +19,7 @@ public class ChartAlexa implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	@NotBlank(message = "*Please provide a date")
 	private String date;
@@ -42,10 +42,10 @@ public class ChartAlexa implements Serializable{
 	@Column(name="show_yn")
 	private int showYn = 1; // default 1
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getDate() {

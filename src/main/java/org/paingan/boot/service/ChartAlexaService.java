@@ -26,4 +26,11 @@ public interface ChartAlexaService {
 	 * @return
 	 */
 	public List<ChartAlexa> findAll();
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public ChartAlexa findAlexaByid(Long id);
 }
