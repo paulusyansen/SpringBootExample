@@ -115,6 +115,19 @@ public class ApiController {
 		
 		return ResponseEntity.ok(response) ;
 	}
+	
+	@GetMapping(value = "/chart/4G/{id}")
+	public ResponseEntity<?> find4GById(@PathVariable(value = "id") int id) {
+        Response response = new Response();
+        
+        Chart4G chart4G = chart4GService.findChart4GById(id);
+
+        if(chart4G == null) throw new NotFoundException("id:"+id);
+        
+        response.setData(chart4G);
+		
+		return ResponseEntity.ok(response) ;
+	}
 
 	
 	@GetMapping(value = "/chart/4G/search/{search}")

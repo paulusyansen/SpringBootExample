@@ -32,4 +32,11 @@ public interface Chart4GService {
 	 * @return
 	 */
 	public List<Chart4G> search(String search);
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Chart4G findChart4GById(int id);
 }

@@ -62,4 +62,8 @@ public class Chart4GServiceImpl implements Chart4GService {
         
         return chart4GRepository.findAll(spec);
 	}
+	
+	public Chart4G findChart4GById(int id) {
+		return chart4GRepository.findChart4GById(id);
+	}
 }
