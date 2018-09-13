@@ -64,6 +64,6 @@ public class Chart4GServiceImpl implements Chart4GService {
 	}
 	
 	public Chart4G findChart4GById(int id) {
-		return chart4GRepository.findChart4GById(id);
+		return chart4GRepository.findById(id);
 	}
 }

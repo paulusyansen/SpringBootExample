@@ -20,12 +20,14 @@ info:
     version: 3.0.0
     
 management:
-  endpoint:
+  endpoints:
     web: 
-    exposure:
-      include: "*"
-    shutdown:
+      exposure:
+        include: "*"
+#    enabled-by-default: false 
+  info:
+    defaults:
       enabled: true
-    enabled-by-default: false
-    info:
-      enabled: true
+#  endpoint:
+#    shutdown:
+#      enabled: true
