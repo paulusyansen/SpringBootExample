@@ -1,6 +1,7 @@
 spring:
   main:
     banner-mode: 'OFF'
+    
   devtools:
     livereload:
       enabled: true
@@ -8,17 +9,25 @@ spring:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
   messages:
     encoding: UTF-8
+    
   h2:
     console:
-      enabled: true
+      enabled: false
+      
   mvc:
     favicon:
       enabled: true
       
+  liquibase:
+    enabled: false
+    change-log: classpath:liquibase-outputChangeLog.xml  
+
+
+# logger ---- 
 logging:
   level:
     root: ERROR
@@ -29,4 +38,27 @@ logging:
     
     
 application:
-  name: Paingan Boot v1.0.3
+  name: Paingan Boot v1.0.3 (development mode)
+  
+
+info:
+  app:
+    name: Paingan Boot (dev)
+    description: This is my first spring boot application
+    version: 3.0.0
+      
+management:
+  endpoints:
+    web: 
+      exposure:
+        include: "*"
+#    enabled-by-default: false 
+  info:
+    defaults:
+      enabled: true
+#  endpoint:
+#    shutdown:
+#      enabled: true
+   
+server:
+  port: 8082
