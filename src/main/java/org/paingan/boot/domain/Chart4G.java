@@ -20,7 +20,7 @@ public class Chart4G implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 
 	@NotBlank(message = "*Please provide a date")
 	private String date;
@@ -49,11 +49,11 @@ public class Chart4G implements Serializable{
 	@Column(name = "show_yn")
 	private int showYn = 1;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

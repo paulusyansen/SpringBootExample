@@ -1,6 +1,7 @@
 package org.paingan.boot.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.paingan.boot.domain.Chart4G;
 import org.paingan.boot.dto.ChartDTO;
@@ -38,5 +39,5 @@ public interface Chart4GService {
 	 * @param id
 	 * @return
 	 */
-	public Chart4G findChart4GById(int id);
+	public Optional<Chart4G> findChart4GById(long id);
 }

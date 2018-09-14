@@ -13,5 +13,5 @@ public interface Chart4GRepository extends JpaRepository<Chart4G, Long>, JpaSpec
     public List<ChartDTO> findAllChart4G();
     
     //@Query("SELECT Chart4G FROM Chart4G c WHERE c.id = :id")
-    Chart4G findById(@Param("id") int id);
+    //Chart4G findById(@Param("id") int id);
 }

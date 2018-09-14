@@ -113,7 +113,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/").and().exceptionHandling()
 			.accessDeniedPage("/login?accessdenied=true");
 
-    	
+    	http.headers().frameOptions().disable(); //h2-console enable jdbc-url: jdbc:h2:mem:testdb
+    	http.headers().frameOptions().sameOrigin(); //h2-console enable
 //    	
 //    	http.cors().and().csrf().disable().authorizeRequests()
 //			.antMatchers(HttpMethod.GET, SecurityConstants.SIGN_UP_URL).permitAll()

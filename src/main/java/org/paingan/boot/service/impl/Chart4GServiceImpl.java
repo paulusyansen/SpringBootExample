@@ -1,6 +1,7 @@
 package org.paingan.boot.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +12,7 @@ import org.paingan.boot.repository.spec.BaseSpecificationBuilder;
 import org.paingan.boot.service.Chart4GService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -63,7 +65,17 @@ public class Chart4GServiceImpl implements Chart4GService {
         return chart4GRepository.findAll(spec);
 	}
 	
-	public Chart4G findChart4GById(int id) {
-		return chart4GRepository.findById(id);
+	/*
+	 * (non-Javadoc)
+	 * @see org.paingan.boot.service.Chart4GService#findChart4GById(long)
+	 */
+	public Optional<Chart4G> findChart4GById(long id) {
+		Optional<Chart4G> chart4G = chart4GRepository.findById(id);
+		
+		if(!chart4G.isPresent()) {
+			throw new UsernameNotFoundException("id-"+id);
+		}
+		
+		return chart4G;
 	}
 }

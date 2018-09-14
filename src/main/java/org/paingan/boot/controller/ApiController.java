@@ -2,6 +2,7 @@ package org.paingan.boot.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -15,6 +16,9 @@ import org.paingan.boot.service.ChartAlexaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +28,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import ch.qos.logback.classic.pattern.MethodOfCallerConverter;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -117,14 +123,19 @@ public class ApiController {
 	}
 	
 	@GetMapping(value = "/chart/4G/{id}")
-	public ResponseEntity<?> find4GById(@PathVariable(value = "id") int id) {
+	public ResponseEntity<?> find4GById(@PathVariable(value = "id") long id) {
         Response response = new Response();
         
-        Chart4G chart4G = chart4GService.findChart4GById(id);
+        Optional<Chart4G> chart4G = chart4GService.findChart4GById(id);
 
-        if(chart4G == null) throw new NotFoundException("id:"+id);
+        if(!chart4G.isPresent()) throw new NotFoundException("id:"+id);
         
-        response.setData(chart4G);
+        Resource<Chart4G> resource = new Resource<Chart4G>(chart4G.get());
+        
+        ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).findAll4G());
+        resource.add(linkTo.withRel("all-4G"));
+        
+        response.setData(resource);
 		
 		return ResponseEntity.ok(response) ;
 	}
