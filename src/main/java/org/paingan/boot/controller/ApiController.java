@@ -29,8 +29,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import ch.qos.logback.classic.pattern.MethodOfCallerConverter;
-
 @RestController
 @RequestMapping(value = "/api")
 public class ApiController {
@@ -170,7 +168,8 @@ public class ApiController {
         response.setUri(location.getPath());
         
       
-		return ResponseEntity.ok(response);
+		//return ResponseEntity.ok(response);
+        return ResponseEntity.created(location).build();
 	}
 
 }
