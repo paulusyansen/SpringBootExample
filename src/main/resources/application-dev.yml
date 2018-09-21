@@ -83,5 +83,5 @@ management:
 
 
 ### server ###  
-server:
-  port: 8082
+#server:
+#  port: 8082
