@@ -12,6 +12,8 @@ import org.paingan.boot.repository.spec.BaseSpecificationBuilder;
 import org.paingan.boot.service.Chart4GService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -77,5 +79,17 @@ public class Chart4GServiceImpl implements Chart4GService {
 		}
 		
 		return chart4G;
+	}
+	
+	@Autowired
+	private KafkaTemplate<String, String> kafkaTemplate;
+	 
+	public void sendMessage(String msg) {
+	   kafkaTemplate.send("paingan-event", msg);
+	} 
+	
+	@KafkaListener(topics = "paingan-event", groupId = "paingan")
+	public void listen(String message) {
+	   System.out.println("Received Messasge in group - group-id: " + message);
 	}
 }

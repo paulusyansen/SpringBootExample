@@ -171,5 +171,17 @@ public class ApiController {
 		//return ResponseEntity.ok(response);
         return ResponseEntity.created(location).build();
 	}
+	
+	@GetMapping(value = "/send/{msg}")
+	public String sendMsg(@PathVariable(value = "msg") String msg) {
+		chart4GService.sendMessage(msg);
+		return msg;
+	}
+	
+	@GetMapping(value = "/listen/{msg}")
+	public String listenMsg(@PathVariable(value = "msg") String msg) {
+		chart4GService.listen(msg);
+		return msg;
+	}
 
 }

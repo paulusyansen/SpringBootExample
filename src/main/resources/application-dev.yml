@@ -35,10 +35,21 @@ spring:
 #    password: deploypw
 #    url: jdbc:mysql://172.18.186.21:3306/test?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
 #    username: deployadmin
+
+  kafka:
+      #admin:
+      #  properties:
+      #    security.protocol: SSL
+      bootstrap-servers: localhost:9092
+      consumer:
+        group-id: paingan
+        fetch-min-size: 1
+        max-poll-records: 1000
       
   mvc:
     favicon:
       enabled: true
+
    
 
   liquibase:
@@ -85,3 +96,7 @@ management:
 ### server ###  
 #server:
 #  port: 8082
+
+boot:
+  kafka:
+    topic: paingan-event

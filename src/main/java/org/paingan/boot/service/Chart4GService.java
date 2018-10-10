@@ -40,4 +40,8 @@ public interface Chart4GService {
 	 * @return
 	 */
 	public Optional<Chart4G> findChart4GById(long id);
+	
+	public void sendMessage(String msg);
+	
+	public void listen(String message);
 }
