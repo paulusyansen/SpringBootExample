@@ -58,6 +58,7 @@ spring:
 
 
 ### logger ###
+logging.file: paingan-boot.log
 logging:
   level:
     root: ERROR
@@ -65,6 +66,11 @@ logging:
     org.springframework.web: INFO
     org.paingan.boot: DEBUG
     org.hibernate: ERROR
+  file:
+    max-history: 20
+    max-size: 50MB
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
     
     
 application:
