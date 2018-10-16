@@ -1,4 +1,9 @@
+CLOUDKARAFKA_USERNAME: qz8x4wx7
+CLOUDKARAFKA_PASSWORD: YEFqg1RXgXGhdCLJN9363A0a_p5zTF6F
+CLOUDKARAFKA_BROKERS: velomobile-01.srvs.cloudkafka.com:9094,velomobile-02.srvs.cloudkafka.com:9094,velomobile-03.srvs.cloudkafka.com:9094
+
 spring:
+  
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -7,18 +12,39 @@ spring:
     password: y5imuwxjnlsgfrrw
     url: jdbc:mysql://yup5s49ny1t8zgee:y5imuwxjnlsgfrrw@jj820qt5lpu6krut.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lb64fl8b9h7sxbit?autoReconnect=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
     username: yup5s49ny1t8zgee
-  liquibase:
+  
+  #liquibase:
     #change-log: classpath:liquibase-outputChangeLog.xml
-    enabled: true
-    change-log: classpath:/db/changelog/db.changelog-master.xml  
+    #enabled: false
+    #change-log: classpath:/db/changelog/db.changelog-master.xml  
     
-    
+  kafka:
+    bootstrap-servers: ${CLOUDKARAFKA_BROKERS}
+    properties:
+      security:
+        proctocol: SASL_SSL
+        sasl:
+          mecahnism: SCRAM-SHA-256
+          jaas:
+            config: org.apache.kafka.common.security.scram.ScramLoginModule required username="${CLOUDKARAFKA_USERNAME}" password="${CLOUDKARAFKA_PASSWORD}";
+    consumer:
+      group-id: ${CLOUDKARAFKA_USERNAME}-consumers
+      auto-offset-reset: latest
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties.spring.json.trusted.packages: sample.kafka
+      
+
 info:
   app:
-    name: Paingan Boot
+    name: Paingan Boot (heroku)
     description: This is my first spring boot application
     version: 3.0.0
     
+cloudkarafka:
+  topic: ${CLOUDKARAFKA_USERNAME}-paingan   
+    
+### actuator ###      
 management:
   endpoints:
     web: 
