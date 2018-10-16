@@ -31,8 +31,12 @@ spring:
       group-id: ${CLOUDKARAFKA_USERNAME}-consumers
       auto-offset-reset: latest
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring.json.trusted.packages: org.paingan.boot.service.impl
+    producer:
+      retries: 10000
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      properties.spring.json.trusted.packages: sample.kafka
+      
       
 
 info:
