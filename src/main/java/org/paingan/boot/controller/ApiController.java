@@ -33,7 +33,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping(value = "/api")
 public class ApiController {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@Autowired
 	private ChartAlexaService chartAlexaService;
 	
@@ -180,8 +180,8 @@ public class ApiController {
 	
 	@GetMapping(value = "/listen/{msg}")
 	public String listenMsg(@PathVariable(value = "msg") String msg) {
-		chart4GService.listen(msg);
-		return msg;
+		chart4GService.processMessage(msg);
+		return "ok";
 	}
 
 }
