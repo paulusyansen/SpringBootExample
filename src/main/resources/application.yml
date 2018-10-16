@@ -2,9 +2,14 @@ server:
   error:
     whitelabel:
       enabled: false
+  port: ${server.port}
+  
 spring:
   profiles:
     active: thym, heroku
     
 header:
   title: Monitoring Tools
+  
+
+  
