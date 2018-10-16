@@ -187,10 +187,10 @@
 		    <version>2.7.0</version>
 		</dependency>
 		
-		<dependency>
-		 	<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		 	<groupId>org.liquibase</groupId> -->
+<!-- 			<artifactId>liquibase-core</artifactId> -->
+<!-- 		</dependency> -->
 		
 		<dependency>
 			 <groupId>com.h2database</groupId>
