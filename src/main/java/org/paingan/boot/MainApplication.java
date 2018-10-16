@@ -18,7 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class MainApplication extends SpringBootServletInitializer {
 	
 	@Value("${cloudkarafka.topic}")
-	private String topic = "paingan-topic";
+	private String topic = "qz8x4wx7-paingan";
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -41,12 +41,12 @@ public class MainApplication extends SpringBootServletInitializer {
 
 	public void sendMessage(String msg) {
 		kafkaTemplate.send(topic, msg);
-		System.out.println("Sent sample message [" + msg + "] to " + topic);
+		System.out.println("[Main App] Sent sample message [" + msg + "] to " + topic);
 	}
 	
 	@KafkaListener(topics = "${cloudkarafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
 	public void listen(String message) {
-		System.out.println("Received Messasge in group - group-id: " + message);
+		System.out.println("[Main App] Received Message in group - group-id: " + message);
 	}
 
 	public void run(ApplicationArguments args) throws Exception {

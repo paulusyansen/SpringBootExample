@@ -39,7 +39,7 @@ spring:
   kafka:
       #admin:
       #  properties:
-      #    security.protocol: SSL
+      #   security.protocol: SSL
       bootstrap-servers: localhost:9092
       consumer:
         group-id: paingan
