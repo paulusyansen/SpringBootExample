@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 public class Chart4GServiceImpl implements Chart4GService {
 	
 	@Value("${cloudkarafka.topic}")
-	private String topic = "paingan-topic";
+	private String topic = "qz8x4wx7-paingan";
 	
 	
 	@Autowired
