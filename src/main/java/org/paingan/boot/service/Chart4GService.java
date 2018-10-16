@@ -43,5 +43,5 @@ public interface Chart4GService {
 	
 	public void sendMessage(String msg);
 	
-	public void listen(String message);
+	public void processMessage(String message);
 }

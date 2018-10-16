@@ -4,7 +4,7 @@ server:
       enabled: false
 spring:
   profiles:
-    active: dev, thym
+    active: thym, heroku
     
 header:
   title: Monitoring Tools

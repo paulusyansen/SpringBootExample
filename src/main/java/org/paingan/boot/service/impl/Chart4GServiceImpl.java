@@ -11,15 +11,22 @@ import org.paingan.boot.repository.Chart4GRepository;
 import org.paingan.boot.repository.spec.BaseSpecificationBuilder;
 import org.paingan.boot.service.Chart4GService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Chart4GServiceImpl implements Chart4GService {
-
+	
+	@Value("${cloudkarafka.topic}")
+	private String topic = "paingan-topic";
+	
+	
 	@Autowired
 	private Chart4GRepository chart4GRepository;
 	
@@ -85,11 +92,12 @@ public class Chart4GServiceImpl implements Chart4GService {
 	private KafkaTemplate<String, String> kafkaTemplate;
 	 
 	public void sendMessage(String msg) {
-	   kafkaTemplate.send("paingan-event", msg);
+	   this.kafkaTemplate.send(topic, msg);
+	   System.out.println("Sent sample message [" + msg + "] to " + topic);
 	} 
 	
-	@KafkaListener(topics = "paingan-event", groupId = "paingan")
-	public void listen(String message) {
-	   System.out.println("Received Messasge in group - group-id: " + message);
+	@KafkaListener(topics = "${cloudkarafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
+	public void processMessage(String message) {
+	   System.out.println("Received message "+message+" in group - group-id: " + "${spring.kafka.consumer.group-id}");
 	}
 }
