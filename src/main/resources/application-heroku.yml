@@ -1,6 +1,6 @@
 CLOUDKARAFKA_USERNAME: qz8x4wx7
 CLOUDKARAFKA_PASSWORD: YEFqg1RXgXGhdCLJN9363A0a_p5zTF6F
-CLOUDKARAFKA_BROKERS: velomobile-01.srvs.cloudkafka.com:9094,velomobile-02.srvs.cloudkafka.com:9094,velomobile-03.srvs.cloudkafka.com:9094
+CLOUDKARAFKA_BROKERS: https://velomobile-01.srvs.cloudkafka.com:9094,https://velomobile-02.srvs.cloudkafka.com:9094,https://velomobile-03.srvs.cloudkafka.com:9094
 
 spring:
   
