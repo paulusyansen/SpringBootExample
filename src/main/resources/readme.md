@@ -8,7 +8,6 @@ Sample project using Spring Boot
 - docker
 
 
-
 ### How to use 
 ```sh
 mvn package -DskipTests
