@@ -47,6 +47,9 @@ info:
     
 cloudkarafka:
   topic: ${CLOUDKARAFKA_USERNAME}-paingan   
+  
+kafka:
+    topic: ${CLOUDKARAFKA_USERNAME}-paingan
     
 ### actuator ###      
 management:

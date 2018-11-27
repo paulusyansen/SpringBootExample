@@ -3,9 +3,6 @@ package org.paingan.boot.config;
 import javax.annotation.PostConstruct;
 
 import org.paingan.boot.security.AuthoritiesConstants;
-import org.paingan.boot.security.JWTAuthenticationFilter;
-import org.paingan.boot.security.JWTAuthorizationFilter;
-import org.paingan.boot.security.SecurityConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanInitializationException;

@@ -9,22 +9,25 @@
 	<version>1.0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>paingan-boot</name>
+	<name>Paingan Boot</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.0.RELEASE</version>
+		<version>2.0.5.RELEASE</version>
 		<relativePath />
 	</parent>
-	
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<docker.image.prefix>paingan</docker.image.prefix>
+		
+		<profile.swagger />
+		
+		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
 	<dependencies>
@@ -44,17 +47,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-test</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -99,6 +97,7 @@
 			<artifactId>bootstrap</artifactId>
 			<version>4.1.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -156,13 +155,13 @@
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger2</artifactId>
-		    <version>2.9.2</version>
+		    <version>${swagger.version}</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>io.springfox</groupId>
 		    <artifactId>springfox-swagger-ui</artifactId>
-		    <version>2.9.2</version>
+		    <version>${swagger.version}</version>
 		</dependency>
 		
 <!-- 		<dependency> -->
@@ -176,10 +175,7 @@
 			 <scope>runtime</scope>
 		</dependency>
 		
-		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-rest-hal-browser</artifactId>
-		</dependency>
+		
 		
 		<dependency>
 		    <groupId>org.springframework.hateoas</groupId>
@@ -202,31 +198,31 @@
 			</plugin>
 			
 			<!-- ./mvnw liquibase:generateChangeLog -->
-<!-- 			<plugin> -->
-<!-- 		        <groupId>org.liquibase</groupId> -->
-<!-- 		        <artifactId>liquibase-maven-plugin</artifactId> -->
-<!-- 		        <version>3.4.1</version> -->
-<!-- 		        <configuration>                   -->
-<!-- 		            <propertyFile>src/main/resources/liquibase.properties</propertyFile> -->
-<!-- 		        </configuration>     -->
-<!-- 		        <dependencies> -->
-<!-- 		            <dependency> -->
-<!-- 		                <groupId>org.liquibase.ext</groupId> -->
-<!-- 		                <artifactId>liquibase-hibernate4</artifactId> -->
-<!-- 		                <version>3.5</version> -->
-<!-- 		            </dependency> -->
-<!-- 		            <dependency> -->
-<!-- 		                <groupId>org.springframework</groupId> -->
-<!-- 		                <artifactId>spring-beans</artifactId> -->
-<!-- 		                <version>4.1.7.RELEASE</version> -->
-<!-- 		            </dependency> -->
-<!-- 		            <dependency> -->
-<!-- 		                <groupId>org.springframework.data</groupId> -->
-<!-- 		                <artifactId>spring-data-jpa</artifactId> -->
-<!-- 		                <version>1.7.3.RELEASE</version> -->
-<!-- 		            </dependency>  -->
-<!-- 	            </dependencies>             -->
-<!--    			</plugin>  -->
+			<plugin>
+		        <groupId>org.liquibase</groupId>
+		        <artifactId>liquibase-maven-plugin</artifactId>
+		        <version>3.4.1</version>
+		        <configuration>                  
+		            <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+		        </configuration>    
+		        <dependencies>
+		            <dependency>
+		                <groupId>org.liquibase.ext</groupId>
+		                <artifactId>liquibase-hibernate4</artifactId>
+		                <version>3.5</version>
+		            </dependency>
+		            <dependency>
+		                <groupId>org.springframework</groupId>
+		                <artifactId>spring-beans</artifactId>
+		                <version>4.1.7.RELEASE</version>
+		            </dependency>
+		            <dependency>
+		                <groupId>org.springframework.data</groupId>
+		                <artifactId>spring-data-jpa</artifactId>
+		                <version>1.7.3.RELEASE</version>
+		            </dependency> 
+	            </dependencies>            
+   			</plugin> 
 <!--    			<plugin> -->
 <!-- 	            <groupId>com.spotify</groupId> -->
 <!-- 	            <artifactId>dockerfile-maven-plugin</artifactId> -->
@@ -252,5 +248,22 @@
 		
 	</build>
 
+	<profiles>
+        <profile>
+            <id>dev</id>
+           	<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-actuator</artifactId>
+				</dependency>
+				
+				<dependency>
+				    <groupId>org.springframework.data</groupId>
+				    <artifactId>spring-data-rest-hal-browser</artifactId>
+				</dependency>
+			</dependencies>
+            
+        </profile>
+ 	</profiles>
 
 </project>

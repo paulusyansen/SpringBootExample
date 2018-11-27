@@ -72,19 +72,19 @@ public class SwaggerConfiguration {
 //	    return oauth;
 //	}
 	
-	private SecurityContext securityContext() {
-	    return SecurityContext.builder()
-	      .securityReferences(
-	        Arrays.asList(new SecurityReference("spring_oauth", scopes())))
-	      .forPaths(PathSelectors.regex("/foos.*"))
-	      .build();
-	}
+//	private SecurityContext securityContext() {
+//	    return SecurityContext.builder()
+//	      .securityReferences(
+//	        Arrays.asList(new SecurityReference("spring_oauth", scopes())))
+//	      .forPaths(PathSelectors.regex("/foos.*"))
+//	      .build();
+//	}
 	
-	private AuthorizationScope[] scopes() {
-	    AuthorizationScope[] scopes = { 
-	      new AuthorizationScope("read", "for read operations"), 
-	      new AuthorizationScope("write", "for write operations"), 
-	      new AuthorizationScope("foo", "Access foo API") };
-	    return scopes;
-	}
+//	private AuthorizationScope[] scopes() {
+//	    AuthorizationScope[] scopes = { 
+//	      new AuthorizationScope("read", "for read operations"), 
+//	      new AuthorizationScope("write", "for write operations"), 
+//	      new AuthorizationScope("foo", "Access foo API") };
+//	    return scopes;
+//	}
 }

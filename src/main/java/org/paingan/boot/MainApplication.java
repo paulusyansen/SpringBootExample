@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @SpringBootApplication
 public class MainApplication extends SpringBootServletInitializer {
 	
-	@Value("${cloudkarafka.topic}")
+	@Value("${kafka.topic}")
 	private String topic = "qz8x4wx7-paingan";
 
 	@Override
@@ -44,7 +44,7 @@ public class MainApplication extends SpringBootServletInitializer {
 		System.out.println("[Main App] Sent sample message [" + msg + "] to " + topic);
 	}
 	
-	@KafkaListener(topics = "${cloudkarafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
+	@KafkaListener(topics = "${kafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
 	public void listen(String message) {
 		System.out.println("[Main App] Received Message in group - group-id: " + message);
 	}

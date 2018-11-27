@@ -12,18 +12,16 @@ import org.paingan.boot.repository.spec.BaseSpecificationBuilder;
 import org.paingan.boot.service.Chart4GService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
 public class Chart4GServiceImpl implements Chart4GService {
 	
-	@Value("${cloudkarafka.topic}")
+	@Value("${kafka.topic}")
 	private String topic = "qz8x4wx7-paingan";
 	
 	
@@ -96,7 +94,7 @@ public class Chart4GServiceImpl implements Chart4GService {
 	   System.out.println("Sent sample message [" + msg + "] to " + topic);
 	} 
 	
-	@KafkaListener(topics = "${cloudkarafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
+	@KafkaListener(topics = "${kafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
 	public void processMessage(String message) {
 	   System.out.println("Received message "+message+" in group - group-id: " + "${spring.kafka.consumer.group-id}");
 	}
