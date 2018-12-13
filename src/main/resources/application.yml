@@ -1,15 +1,22 @@
+# default port configuration
 server:
   error:
     whitelabel:
       enabled: false
   port: 8082
   
+# default profile
 spring:
   profiles:
     active: thym, dev #heroku
     
+logging:
+  level:
+    ROOT: INFO
+
+# common properties    
 header:
-  title: Monitoring Tools
+  title: Paingan Boot - Spring Boot Examples
   
 
   

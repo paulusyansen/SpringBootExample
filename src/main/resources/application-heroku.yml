@@ -38,6 +38,25 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       
       
+  liquibase:
+    enabled: false
+    change-log: classpath:liquibase-outputChangeLog.xml  
+    
+  social:
+    google:
+      appId: 69362329948-o0hia1jdag0keb43bddasvvmhqn6ik49.apps.googleusercontent.com
+      appSecret: A-Q8VUrsxKgMl1Cbt-S2CMfy
+      
+      
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 69362329948-o0hia1jdag0keb43bddasvvmhqn6ik49.apps.googleusercontent.com
+            clientSecret: A-Q8VUrsxKgMl1Cbt-S2CMfy
+      
+      
 
 info:
   app:
