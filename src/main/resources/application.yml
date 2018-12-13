@@ -2,7 +2,7 @@ server:
   error:
     whitelabel:
       enabled: false
-  port: ${server.port}
+  port: 8082
   
 spring:
   profiles:

@@ -1,12 +1,15 @@
 package org.paingan.boot.controller;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.Valid;
 
 import org.paingan.boot.domain.UserAccount;
+//import org.paingan.boot.config.GoogleProvider;
 import org.paingan.boot.domain.Role;
 import org.paingan.boot.repository.RoleRepository;
 import org.paingan.boot.repository.UserRepository;
@@ -14,10 +17,15 @@ import org.paingan.boot.security.AuthoritiesConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ResolvableType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -89,4 +97,33 @@ public class LoginController extends BaseController{
 		
 		return modelAndView;
 	}
+	
+	
+
+	 
+	 private static String authorizationRequestBaseUri
+     = "oauth2/authorization";
+   Map<String, String> oauth2AuthenticationUrls
+     = new HashMap<>();
+
+   @Autowired
+   private ClientRegistrationRepository clientRegistrationRepository;
+
+   @GetMapping("/oauth_login")
+   public String getLoginPage(Model model) {
+	   Iterable<ClientRegistration> clientRegistrations = null;
+	    ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository)
+	      .as(Iterable.class);
+	    if (type != ResolvableType.NONE && 
+	      ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
+	        clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
+	    }
+	 
+	    clientRegistrations.forEach(registration -> 
+	      oauth2AuthenticationUrls.put(registration.getClientName(), 
+	      authorizationRequestBaseUri + "/" + registration.getRegistrationId()));
+	    model.addAttribute("urls", oauth2AuthenticationUrls);
+	 
+	    return "oauth_login";
+   }
 }

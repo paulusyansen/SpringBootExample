@@ -40,6 +40,13 @@
 		<button class="btn btn-lg btn-primary btn-block" name="Submit"
 			value="Login" type="Submit" th:text="Login"></button>
 	</form>
+	
+<form action="/google" method="POST" style="display: inline">
+ <input type="hidden" name="scope" value="profile email" />
+ <button type="submit" class="btn btn-danger">
+ Google <span class="fa fa-google-plus"></span>
+ </button>
+ </form>
 
 	<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="webjars/bootstrap/4.1.0/js/bootstrap.min.js"></script>
