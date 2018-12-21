@@ -60,7 +60,7 @@ spring:
 
 info:
   app:
-    name: Paingan Boot (heroku)
+    name: Paingan Boot
     description: This is my first spring boot application
     version: 3.0.0
     

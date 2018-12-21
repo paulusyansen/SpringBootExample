@@ -48,11 +48,11 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-test</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -184,7 +184,6 @@
 		</dependency>
 		
 		
-		
 		<dependency>
 		    <groupId>org.springframework.hateoas</groupId>
 		    <artifactId>spring-hateoas</artifactId>
@@ -195,28 +194,24 @@
 		    <artifactId>spring-kafka</artifactId>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-core -->
 		<dependency>
 		    <groupId>org.springframework.social</groupId>
 		    <artifactId>spring-social-core</artifactId>
 		    <version>1.1.6.RELEASE</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-config -->
 		<dependency>
 		    <groupId>org.springframework.social</groupId>
 		    <artifactId>spring-social-config</artifactId>
 		    <version>1.1.6.RELEASE</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-facebook -->
 		<dependency>
 		    <groupId>org.springframework.social</groupId>
 		    <artifactId>spring-social-facebook</artifactId>
 		    <version>2.0.3.RELEASE</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.springframework.social/spring-social-google -->
 		<dependency>
 		    <groupId>org.springframework.social</groupId>
 		    <artifactId>spring-social-google</artifactId>
@@ -224,24 +219,25 @@
 		</dependency>
 
 		<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-oauth2-client</artifactId>
-</dependency>
-<dependency>
-   <groupId>org.springframework.security</groupId>
-   <artifactId>spring-security-oauth2-jose</artifactId>
-</dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-oauth2-client</artifactId>
+		</dependency>
+		
+		<dependency>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-oauth2-jose</artifactId>
+		</dependency>
 
 
-<dependency>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-actuator</artifactId>
-				</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-actuator</artifactId> -->
+<!-- 		</dependency> -->
 				
-				<dependency>
-				    <groupId>org.springframework.data</groupId>
-				    <artifactId>spring-data-rest-hal-browser</artifactId>
-				</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.data</groupId> -->
+<!-- 			<artifactId>spring-data-rest-hal-browser</artifactId> -->
+<!-- 		</dependency> -->
 		
 	</dependencies>
 
@@ -279,6 +275,7 @@
 		            </dependency> 
 	            </dependencies>            
    			</plugin> 
+   			
 <!--    			<plugin> -->
 <!-- 	            <groupId>com.spotify</groupId> -->
 <!-- 	            <artifactId>dockerfile-maven-plugin</artifactId> -->
@@ -302,6 +299,7 @@
 <!-- 					</execution> -->
 <!-- 				</executions> -->
 <!-- 	        </plugin> -->
+
 		</plugins>
 		
 	</build>
@@ -320,7 +318,6 @@
 				    <artifactId>spring-data-rest-hal-browser</artifactId>
 				</dependency>
 			</dependencies>
-            
         </profile>
  	</profiles>
 
