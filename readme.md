@@ -9,7 +9,7 @@ Sample project using Spring Boot
 
 ### How to use 
 ```sh
-mvn package -DskipTests
+mvn clean install -DskipTests=true
 ```
 
 ```sh
