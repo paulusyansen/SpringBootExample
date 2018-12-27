@@ -6,7 +6,7 @@
 
 	<groupId>org.paingan.boot</groupId>
 	<artifactId>paingan-boot</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>0.4.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>Paingan Boot</name>
@@ -67,11 +67,6 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 
@@ -99,24 +94,38 @@
 <!--      <version>1.5.9.RELEASE</version> -->
 <!-- </dependency> -->
 
+
+
+<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-thymeleaf</artifactId>
+				</dependency>
+				
+				<dependency>
+					<groupId>org.thymeleaf.extras</groupId>
+					<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+					<version>3.0.2.RELEASE</version>
+				</dependency>
+				
+				<dependency>
+					<groupId>org.webjars</groupId>
+					<artifactId>bootstrap</artifactId>
+					<version>4.1.0</version>
+				</dependency>
 		
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>4.1.0</version>
-		</dependency>
+				<dependency>
+					<groupId>org.webjars</groupId>
+					<artifactId>jquery</artifactId>
+					<version>3.3.1</version>
+				</dependency>
 		
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>3.3.1</version>
-		</dependency>
+				<dependency>
+					<groupId>org.webjars.bowergithub.sweetalert2</groupId>
+					<artifactId>sweetalert2</artifactId>
+					<version>7.18.0</version>
+				</dependency>
 		
-		<dependency>
-			<groupId>org.webjars.bowergithub.sweetalert2</groupId>
-			<artifactId>sweetalert2</artifactId>
-			<version>7.18.0</version>
-		</dependency>
+
 
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
@@ -150,12 +159,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
-			<version>3.0.2.RELEASE</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-envers</artifactId>
 		</dependency>
@@ -182,7 +185,6 @@
 			 <artifactId>h2</artifactId>
 			 <scope>runtime</scope>
 		</dependency>
-		
 		
 		<dependency>
 		    <groupId>org.springframework.hateoas</groupId>
@@ -238,6 +240,12 @@
 <!-- 			<groupId>org.springframework.data</groupId> -->
 <!-- 			<artifactId>spring-data-rest-hal-browser</artifactId> -->
 <!-- 		</dependency> -->
+
+		<dependency>
+		    <groupId>io.reactivex</groupId>
+		    <artifactId>rxjava</artifactId>
+		    <version>1.3.8</version>
+		</dependency>
 		
 	</dependencies>
 
@@ -316,6 +324,40 @@
 				<dependency>
 				    <groupId>org.springframework.data</groupId>
 				    <artifactId>spring-data-rest-hal-browser</artifactId>
+				</dependency>
+			</dependencies>
+        </profile>
+        
+        <profile>
+		    <id>thym</id>
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-thymeleaf</artifactId>
+				</dependency>
+				
+				<dependency>
+					<groupId>org.thymeleaf.extras</groupId>
+					<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+					<version>3.0.2.RELEASE</version>
+				</dependency>
+				
+				<dependency>
+					<groupId>org.webjars</groupId>
+					<artifactId>bootstrap</artifactId>
+					<version>4.1.0</version>
+				</dependency>
+		
+				<dependency>
+					<groupId>org.webjars</groupId>
+					<artifactId>jquery</artifactId>
+					<version>3.3.1</version>
+				</dependency>
+		
+				<dependency>
+					<groupId>org.webjars.bowergithub.sweetalert2</groupId>
+					<artifactId>sweetalert2</artifactId>
+					<version>7.18.0</version>
 				</dependency>
 			</dependencies>
         </profile>

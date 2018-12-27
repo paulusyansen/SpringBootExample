@@ -35,7 +35,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -46,11 +45,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         
     @Autowired
     private Environment env;
-
-//	@Bean
-//	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//		return new BCryptPasswordEncoder();
-//	}
     
     public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService) {
     	this.authenticationManagerBuilder = authenticationManagerBuilder;

@@ -21,9 +21,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class Chart4GServiceImpl implements Chart4GService {
 	
-	@Value("${kafka.topic}")
+	@Value("${kafka.topic.general}")
 	private String topic = "qz8x4wx7-paingan";
 	
+	@Value("${spring.kafka.consumer.group-id}")
+	private final String groupId = "";
 	
 	@Autowired
 	private Chart4GRepository chart4GRepository;
@@ -94,8 +96,13 @@ public class Chart4GServiceImpl implements Chart4GService {
 	   System.out.println("Sent sample message [" + msg + "] to " + topic);
 	} 
 	
-	@KafkaListener(topics = "${kafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
-	public void processMessage(String message) {
-	   System.out.println("Received message "+message+" in group - group-id: " + "${spring.kafka.consumer.group-id}");
-	}
+//	@KafkaListener(topics = "${kafka.topic.general}", groupId = "${spring.kafka.consumer.group-id}")
+//	public void processMessage(String message) {
+//	   System.out.println("Received message "+message+" in group - group-id: " + "${spring.kafka.consumer.group-id}");
+//	}
+//	
+//	@KafkaListener(topics = "${kafka.topic.general}", groupId = "${spring.kafka.consumer.group-id}")
+//	public void processMessageSave(String message) {
+//	   System.out.println("Received message "+message);
+//	}
 }
