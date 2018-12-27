@@ -11,12 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -33,6 +35,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
+//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -40,15 +43,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
     @Autowired
 	private UserDetailsService userDetailsService;
-    
+        
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private Environment env;
 
-
-    public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+//	@Bean
+//	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
+    
+    public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService) {
     	this.authenticationManagerBuilder = authenticationManagerBuilder;
-    	this.userDetailsService = userDetailsService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    	this.userDetailsService = userDetailsService;;
     }
     
     @PostConstruct
@@ -73,9 +79,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
     
+
+    
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
     
     @Override
@@ -181,8 +189,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static String CLIENT_PROPERTY_KEY 
     = "spring.security.oauth2.client.registration.";
    
-  @Autowired
-  private Environment env;
+
    
   private ClientRegistration getRegistration(String client) {
       String clientId = env.getProperty(

@@ -15,41 +15,45 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 //@EnableAutoConfiguration
 @SpringBootApplication
-public class MainApplication extends SpringBootServletInitializer {
+public class MainApp extends SpringBootServletInitializer {
 	
-	@Value("${kafka.topic}")
-	private String topic = "qz8x4wx7-paingan";
+//	@Value("${kafka.topic}")
+//	private String topic = "qz8x4wx7-paingan";
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MainApplication.class);
+		return application.sources(MainApp.class);
 	}
 	
-	@Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//	@Bean
+//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 	
-	public static void main(String[] args) { 
-		//sendMessage("Hi Welcome to Spring For Apache Kafka");
-		SpringApplication.run(MainApplication.class, args);
+	public static void main(String[] args) {
+		SpringApplication.run(MainApp.class, args);
 	}
 	
 	
-	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
-
-	public void sendMessage(String msg) {
-		kafkaTemplate.send(topic, msg);
-		System.out.println("[Main App] Sent sample message [" + msg + "] to " + topic);
-	}
-	
-	@KafkaListener(topics = "${kafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
-	public void listen(String message) {
-		System.out.println("[Main App] Received Message in group - group-id: " + message);
-	}
-
-	public void run(ApplicationArguments args) throws Exception {
-		sendMessage("Hi Welcome to Spring For Apache Kafka");
-	}
+//	@Bean
+//	  public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//	      return new BCryptPasswordEncoder();
+//	  }
+//	
+//	@Autowired
+//	private KafkaTemplate<String, String> kafkaTemplate;
+//
+//	public void sendMessage(String msg) {
+//		kafkaTemplate.send(topic, msg);
+//		System.out.println("[Main App] Sent sample message [" + msg + "] to " + topic);
+//	}
+//	
+//	@KafkaListener(topics = "${kafka.topic}", groupId = "${spring.kafka.consumer.group-id}")
+//	public void listen(String message) {
+//		System.out.println("[Main App] Received Message in group - group-id: " + message);
+//	}
+//
+//	public void run(ApplicationArguments args) throws Exception {
+//		sendMessage("Hi Welcome to Spring For Apache Kafka");
+//	}
 }

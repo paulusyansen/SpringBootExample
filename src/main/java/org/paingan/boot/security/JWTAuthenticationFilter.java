@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.paingan.boot.domain.UserAccount;
+import org.paingan.boot.domain.Users;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -37,7 +37,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
-            UserAccount creds = new ObjectMapper().readValue(req.getInputStream(), UserAccount.class);
+            Users creds = new ObjectMapper().readValue(req.getInputStream(), Users.class);
 
             logger.debug("attemptAuthentication getUsername:"+creds.getUsername());
             return authenticationManager.authenticate(

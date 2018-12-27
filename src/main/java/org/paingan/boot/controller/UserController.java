@@ -1,6 +1,6 @@
 package org.paingan.boot.controller;
 
-import org.paingan.boot.domain.UserAccount;
+import org.paingan.boot.domain.Users;
 import org.paingan.boot.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class UserController {
 	}
 
 	@PostMapping("/sign-up")
-	public void signUp(@RequestBody UserAccount applicationUser) {
+	public void signUp(@RequestBody Users applicationUser) {
 		applicationUser.setPassword(bCryptPasswordEncoder.encode(applicationUser.getPassword()));
 		userRepository.save(applicationUser);
 	}

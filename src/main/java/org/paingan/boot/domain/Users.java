@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user")
-public class UserAccount implements Serializable{
+public class Users implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -30,11 +30,9 @@ public class UserAccount implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	//@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an username")
 	private String username;
 	
-	//@JsonIgnore
     @NotNull
 	@Length(min = 5, message = "*Your password must have at least 5 characters")
 	@NotEmpty(message = "*Please provide your password")
@@ -56,10 +54,10 @@ public class UserAccount implements Serializable{
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 	
-	public UserAccount() {
+	public Users() {
 	}
 	
-	public UserAccount(String username, String password) {
+	public Users(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}

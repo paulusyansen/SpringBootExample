@@ -8,7 +8,7 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
-import org.paingan.boot.domain.UserAccount;
+import org.paingan.boot.domain.Users;
 //import org.paingan.boot.config.GoogleProvider;
 import org.paingan.boot.domain.Role;
 import org.paingan.boot.repository.RoleRepository;
@@ -56,19 +56,19 @@ public class LoginController extends BaseController{
 	public ModelAndView register(){
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("title", this.title);
-		UserAccount user = new UserAccount();
+		Users user = new Users();
 		mav.addObject("user", user);
 		mav.setViewName("register");
 		return mav;
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView createNewUser(@Valid @ModelAttribute("user")  UserAccount user, BindingResult bindingResult) {
+	public ModelAndView createNewUser(@Valid @ModelAttribute("user")  Users user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("title", this.title);
 		modelAndView.addObject("user", user);
 		
-		UserAccount userExists = userRepository.findByUsername(user.getUsername());
+		Users userExists = userRepository.findByUsername(user.getUsername());
 		if (userExists != null) {
 			bindingResult.rejectValue("username", "error.username", "There is already a user registered with the email provided");
 		}
@@ -90,7 +90,7 @@ public class LoginController extends BaseController{
 			
 			userRepository.save(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
-			modelAndView.addObject("user", new UserAccount());
+			modelAndView.addObject("user", new Users());
 			modelAndView.setViewName("register");
 		}
 		
@@ -101,29 +101,24 @@ public class LoginController extends BaseController{
 	
 
 	 
-	 private static String authorizationRequestBaseUri
-     = "oauth2/authorization";
-   Map<String, String> oauth2AuthenticationUrls
-     = new HashMap<>();
+	private static String authorizationRequestBaseUri = "oauth2/authorization";
+	Map<String, String> oauth2AuthenticationUrls = new HashMap<>();
 
-   @Autowired
-   private ClientRegistrationRepository clientRegistrationRepository;
+	@Autowired
+	private ClientRegistrationRepository clientRegistrationRepository;
 
-   @GetMapping("/oauth_login")
-   public String getLoginPage(Model model) {
-	   Iterable<ClientRegistration> clientRegistrations = null;
-	    ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository)
-	      .as(Iterable.class);
-	    if (type != ResolvableType.NONE && 
-	      ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
-	        clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
-	    }
-	 
-	    clientRegistrations.forEach(registration -> 
-	      oauth2AuthenticationUrls.put(registration.getClientName(), 
-	      authorizationRequestBaseUri + "/" + registration.getRegistrationId()));
-	    model.addAttribute("urls", oauth2AuthenticationUrls);
-	 
-	    return "oauth_login";
-   }
+	@GetMapping("/oauth_login")
+	public String getLoginPage(Model model) {
+		Iterable<ClientRegistration> clientRegistrations = null;
+		ResolvableType type = ResolvableType.forInstance(clientRegistrationRepository).as(Iterable.class);
+		if (type != ResolvableType.NONE && ClientRegistration.class.isAssignableFrom(type.resolveGenerics()[0])) {
+			clientRegistrations = (Iterable<ClientRegistration>) clientRegistrationRepository;
+		}
+
+		clientRegistrations.forEach(registration -> oauth2AuthenticationUrls.put(registration.getClientName(),
+				authorizationRequestBaseUri + "/" + registration.getRegistrationId()));
+		model.addAttribute("urls", oauth2AuthenticationUrls);
+
+		return "oauth_login";
+	}
 }
