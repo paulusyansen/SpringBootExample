@@ -1,4 +1,4 @@
-package org.paingan.boot.controller;
+package org.paingan.boot.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
-
-public class EventController {
+@Service
+public class EventConsumerServiceImpl {
 	
-	private static final Logger log = LoggerFactory.getLogger(EventController.class);
+	private static final Logger log = LoggerFactory.getLogger(EventConsumerServiceImpl.class);
 	
 	@Value("${kafka.topic.general}")
 	private String topic = "qz8x4wx7-paingan";

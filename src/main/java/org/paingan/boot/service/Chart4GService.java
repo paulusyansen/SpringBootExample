@@ -41,7 +41,9 @@ public interface Chart4GService {
 	 */
 	public Optional<Chart4G> findChart4GById(long id);
 	
+	/**
+	 * 
+	 * @param msg
+	 */
 	public void sendMessage(String msg);
-	
-	public void processMessage(String message);
 }

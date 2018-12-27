@@ -177,11 +177,5 @@ public class ApiController {
 		chart4GService.sendMessage(msg);
 		return msg;
 	}
-	
-	@GetMapping(value = "/listen/{msg}")
-	public String listenMsg(@PathVariable(value = "msg") String msg) {
-		chart4GService.processMessage(msg);
-		return "ok";
-	}
 
 }

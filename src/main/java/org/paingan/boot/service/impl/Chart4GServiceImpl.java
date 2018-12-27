@@ -100,7 +100,7 @@ public class Chart4GServiceImpl implements Chart4GService {
 //	public void processMessage(String message) {
 //	   System.out.println("Received message "+message+" in group - group-id: " + "${spring.kafka.consumer.group-id}");
 //	}
-//	
+	
 //	@KafkaListener(topics = "${kafka.topic.general}", groupId = "${spring.kafka.consumer.group-id}")
 //	public void processMessageSave(String message) {
 //	   System.out.println("Received message "+message);
