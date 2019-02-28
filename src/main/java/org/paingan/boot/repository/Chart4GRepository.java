@@ -6,7 +6,6 @@ import org.paingan.boot.domain.Chart4G;
 import org.paingan.boot.dto.ChartDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.query.Param;
 
 public interface Chart4GRepository extends JpaRepository<Chart4G, Long>, JpaSpecificationExecutor<Chart4G>    {
 

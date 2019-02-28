@@ -7,6 +7,8 @@ server:
   
 # default profile
 spring:
+  application:
+    name: Paingan Boot
   profiles:
     active: thym, dev #heroku
     

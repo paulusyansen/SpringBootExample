@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 
 import org.paingan.boot.security.AuthoritiesConstants;
+import org.paingan.boot.security.JWTAuthenticationFilter;
+import org.paingan.boot.security.JWTAuthorizationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanInitializationException;
@@ -22,6 +24,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -105,14 +108,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                // this disables session creation on Spring Security
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 //    	
-    	http.cors().and().csrf().disable().
-		authorizeRequests()
+    	http.cors().and().csrf().disable().authorizeRequests()
 			.antMatchers("/chart","/form").hasAnyRole(AuthoritiesConstants.USER.getText(),AuthoritiesConstants.ADMIN.getText())
 			.antMatchers(HttpMethod.POST,"/registration").hasRole(AuthoritiesConstants.ADMIN.getText())
 			.antMatchers("/actuator/**").permitAll()
 			.antMatchers("/static/**").permitAll()
-			.and().csrf().disable().formLogin()
-			.loginPage("/login").failureUrl("/login?error=true")
+//			.and().csrf().disable().formLogin()
+			 .and()
+          .addFilter(new JWTAuthenticationFilter(authenticationManager()))
+          .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+//          .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+          .formLogin()
+          .loginPage("/login").failureUrl("/login?error=true")
 			.defaultSuccessUrl("/")
 			.usernameParameter("username")
 			.passwordParameter("password")

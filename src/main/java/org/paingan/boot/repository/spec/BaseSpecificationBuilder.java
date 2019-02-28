@@ -8,6 +8,7 @@ import org.paingan.constant.SearchOperation;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 
+@SuppressWarnings("deprecation")
 public class BaseSpecificationBuilder<T> {
 	private final List<SpecSearchCriteria> params;
 
