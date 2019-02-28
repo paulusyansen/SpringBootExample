@@ -30,18 +30,18 @@ import id.co.elevenia.eventagg.config.DefaultProfileUtil;
 
 //@EnableAutoConfiguration
 @SpringBootApplication
-public class MainApp extends SpringBootServletInitializer {
+public class PainganBootApp extends SpringBootServletInitializer {
 	
-	private static final Logger log = LoggerFactory.getLogger(MainApp.class);
+	private static final Logger log = LoggerFactory.getLogger(PainganBootApp.class);
 
     private final Environment env;
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MainApp.class);
+		return application.sources(PainganBootApp.class);
 	}
 	
-	public MainApp(Environment env) {
+	public PainganBootApp(Environment env) {
 		this.env = env;
 	}
 	
@@ -54,7 +54,7 @@ public class MainApp extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 //		SpringApplication.run(MainApp.class, args);
 
-		SpringApplication app = new SpringApplication(MainApp.class);
+		SpringApplication app = new SpringApplication(PainganBootApp.class);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);
 	}
